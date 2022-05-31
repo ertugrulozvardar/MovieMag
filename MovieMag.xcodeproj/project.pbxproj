@@ -17,6 +17,7 @@
 		6F265CD42846B5230032026D /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F265CD32846B5230032026D /* MovieService.swift */; };
 		6F265CD62846B5560032026D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F265CD52846B5560032026D /* Movie.swift */; };
 		6F265CD82846B57A0032026D /* AllMovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F265CD72846B57A0032026D /* AllMovieResponse.swift */; };
+		6F265CDA2846D0D50032026D /* morbius.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6F265CD92846D0D30032026D /* morbius.jpeg */; };
 		6FA53BFD284692020006396A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA53BFC284692020006396A /* AppDelegate.swift */; };
 		6FA53BFF284692030006396A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA53BFE284692030006396A /* SceneDelegate.swift */; };
 		6FA53C04284692040006396A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA53C02284692040006396A /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		6F265CD32846B5230032026D /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		6F265CD52846B5560032026D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		6F265CD72846B57A0032026D /* AllMovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMovieResponse.swift; sourceTree = "<group>"; };
+		6F265CD92846D0D30032026D /* morbius.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = morbius.jpeg; sourceTree = "<group>"; };
 		6FA53BF9284692020006396A /* MovieMag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA53BFC284692020006396A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FA53BFE284692030006396A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		6FA53BF0284691FC0006396A = {
 			isa = PBXGroup;
 			children = (
+				6F265CD92846D0D30032026D /* morbius.jpeg */,
 				6FA53BFB284692020006396A /* MovieMag */,
 				6FA53BFA284692020006396A /* Products */,
 			);
@@ -224,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F265CDA2846D0D50032026D /* morbius.jpeg in Resources */,
 				6FA53C09284692A50006396A /* LaunchScreen.storyboard in Resources */,
 				6FA53C06284692A50006396A /* Assets.xcassets in Resources */,
 				6F265CC92846B4660032026D /* MovieTableViewCell.xib in Resources */,

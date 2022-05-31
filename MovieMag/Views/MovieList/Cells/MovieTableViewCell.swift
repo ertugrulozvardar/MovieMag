@@ -9,15 +9,20 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var movieImageView: UIImageView! {
+        didSet {
+            movieImageView.layer.cornerRadius = 25
+        }
     }
     
+    @IBOutlet weak var movieNameLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var movieFavoriteIcon: UIImageView!
+    
+    func configure(movie: Movie) {
+        movieNameLabel.text = movie.title
+        releaseDateLabel.text = movie.releaseDate
+        movieRatingLabel.text = movie.ratingText    
+    }
 }
