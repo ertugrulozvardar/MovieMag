@@ -25,12 +25,13 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchBar()
-        initData()
+        fetchMovies()
     }
     
     func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.prefetchDataSource = self
         tableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
     }
     
@@ -42,7 +43,7 @@ class MovieListViewController: UIViewController {
         self.tableView.tableHeaderView = searchBar
     }
     
-    func initData() {
+    func fetchMovies() {
         isFetchingMovies = true
         movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
             switch result {
@@ -88,8 +89,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 extension MovieListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= movies.count - 3 && isFetchingMovies {
-                initData()
+            if index.row >= movies.count - 3 && !isFetchingMovies {
+                fetchMovies()
                 break
             }
         }
@@ -99,7 +100,7 @@ extension MovieListViewController: UITableViewDataSourcePrefetching {
 extension MovieListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            initData()
+            fetchMovies()
         }
         else {
             filteredMovies = movies.filter({ movie in
