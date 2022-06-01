@@ -17,7 +17,7 @@ struct MovieService: MovieServiceProtocol {
     private let apiKey = "2a688e11aac3f4d3278cc7ed05a281ec"
     
     func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
-            let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)")!)
+            let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&page=\(page)")!)
             network.performRequest(request: urlRequest, completion: completion)
         }
 }
