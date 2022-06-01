@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MovieServiceProtocol {
-    func fetchAllMovies(completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
 }
 
 struct MovieService: MovieServiceProtocol {
@@ -16,7 +16,7 @@ struct MovieService: MovieServiceProtocol {
     private let network = Network()
     private let apiKey = "2a688e11aac3f4d3278cc7ed05a281ec"
     
-    func fetchAllMovies(completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
+    func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
         }

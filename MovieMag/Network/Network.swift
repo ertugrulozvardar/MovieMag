@@ -37,4 +37,5 @@ enum NetworkError: Error {
     case decodingError
     case networkError
     case unknownError
+    case invalidUrlError
 }
