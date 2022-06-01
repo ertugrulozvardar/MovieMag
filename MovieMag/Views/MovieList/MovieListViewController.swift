@@ -8,22 +8,78 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    
+    
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
+        }
+    }
+
+    
+    private var movies: [Movie] = []
+    private var filteredMovies = [Movie]()
+    private var isFilterActive = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSearchBar()
+        initData()
+    }
+    
+    func initSearchBar() {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        searchBar.delegate = self
+        searchBar.showsScopeBar = true
+        searchBar.tintColor = UIColor.lightGray
+        self.tableView.tableHeaderView = searchBar
+    }
+    
+    func initData() {
+    } //MovieService will be called inside this function
+}
 
-        // Do any additional setup after loading the view.
+//MARK: -TableView Delegate & DataSource Methods
+extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFilterActive {
+            return filteredMovies.count
+        } else {
+            return movies.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
+        let movie: Movie
+        
+        if isFilterActive {
+            movie = filteredMovies[indexPath.row]
+        } else {
+            movie = movies[indexPath.row]
+        }
+    
+        cell.configure(movie: movie)
+        return cell
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+//MARK: -SearchBar Delegate Methods
+extension MovieListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            initData()
+        }
+        else {
+            filteredMovies = movies.filter({ movie in
+                return movie.title.range(of: searchText, options: [ .caseInsensitive ]) != nil
+            })
+        }
+        isFilterActive = true
+        self.tableView.reloadData()
     }
-    */
-
 }

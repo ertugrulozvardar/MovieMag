@@ -29,14 +29,29 @@
         <!--All Movies-->
         <scene sceneID="1Nc-gt-VXT">
             <objects>
-                <viewController id="TmJ-1b-rPH" customClass="MovieListViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieListViewController" id="TmJ-1b-rPH" customClass="MovieListViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JcN-3V-Tb7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ddH-fc-Pe7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ty2-Lk-uwN"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstItem="ddH-fc-Pe7" firstAttribute="top" secondItem="ty2-Lk-uwN" secondAttribute="top" id="7Hg-Iw-NYw"/>
+                            <constraint firstItem="ty2-Lk-uwN" firstAttribute="bottom" secondItem="ddH-fc-Pe7" secondAttribute="bottom" id="Fkm-2n-hU1"/>
+                            <constraint firstItem="ddH-fc-Pe7" firstAttribute="leading" secondItem="ty2-Lk-uwN" secondAttribute="leading" id="fdR-ma-t0s"/>
+                            <constraint firstItem="ty2-Lk-uwN" firstAttribute="trailing" secondItem="ddH-fc-Pe7" secondAttribute="trailing" id="ixJ-nH-gno"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="All Movies" id="SjF-s6-9Be"/>
+                    <connections>
+                        <outlet property="tableView" destination="ddH-fc-Pe7" id="46g-nm-cfi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMT-82-8iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,7 +60,7 @@
         <!--Movie Detail View Controller-->
         <scene sceneID="Rtz-aQ-gPg">
             <objects>
-                <viewController id="C8p-if-6Jc" customClass="MovieDetailViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailViewController" id="C8p-if-6Jc" customClass="MovieDetailViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ruy-cR-0mX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +75,7 @@
         <!--Cast Detail View Controller-->
         <scene sceneID="ppY-R2-ltd">
             <objects>
-                <viewController id="gQE-lF-Oy7" customClass="CastDetailViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CastDetailViewController" id="gQE-lF-Oy7" customClass="CastDetailViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gyU-Id-lMh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +90,7 @@
         <!--Favorite Movies-->
         <scene sceneID="jsI-VH-4XE">
             <objects>
-                <viewController id="jGe-rt-k7X" customClass="MoviesFavoriteViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoviesFavoriteViewController" id="jGe-rt-k7X" customClass="MoviesFavoriteViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mup-AU-IUA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

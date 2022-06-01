@@ -21,6 +21,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieFavoriteIcon: UIImageView!
     
     func configure(movie: Movie) {
+        //movieImageView.kf.setImage(with: movie.posterURL)
         movieNameLabel.text = movie.title
         releaseDateLabel.text = movie.releaseDate
         movieRatingLabel.text = movie.ratingText    
