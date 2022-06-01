@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -21,7 +22,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieFavoriteIcon: UIImageView!
     
     func configure(movie: Movie) {
-        //movieImageView.kf.setImage(with: movie.posterURL)
+        movieImageView.kf.setImage(with: movie.posterURL)
         movieNameLabel.text = movie.title
         releaseDateLabel.text = movie.release_date
         movieRatingLabel.text = movie.ratingText    
