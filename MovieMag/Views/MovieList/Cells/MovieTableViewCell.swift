@@ -23,7 +23,7 @@ class MovieTableViewCell: UITableViewCell {
     func configure(movie: Movie) {
         //movieImageView.kf.setImage(with: movie.posterURL)
         movieNameLabel.text = movie.title
-        releaseDateLabel.text = movie.releaseDate
+        releaseDateLabel.text = movie.release_date
         movieRatingLabel.text = movie.ratingText    
     }
 }

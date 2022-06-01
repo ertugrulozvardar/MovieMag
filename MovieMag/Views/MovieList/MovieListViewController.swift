@@ -22,6 +22,7 @@ class MovieListViewController: UIViewController {
     private var movies: [Movie] = []
     private var filteredMovies = [Movie]()
     private var isFilterActive = false
+    private let movieService: MovieServiceProtocol = MovieService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,16 @@ class MovieListViewController: UIViewController {
     }
     
     func initData() {
-    } //MovieService will be called inside this function
+        movieService.fetchAllMovies { result in
+            switch result {
+            case .success(let response):
+                self.movies = response.results ?? []
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 //MARK: -TableView Delegate & DataSource Methods

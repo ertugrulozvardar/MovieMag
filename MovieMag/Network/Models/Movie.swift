@@ -9,17 +9,23 @@ import Foundation
 
 struct Movie: Codable {
 
+    let adult: Bool?
+    let backdrop_path: String?
+    //let genre_ids: [Int]?
     let id: Int
+    let original_language: String?
+    let original_title: String?
+    let overview: String?
+    let popularity: Float?
+    let poster_path: String?
+    let release_date: String?
     let title: String
-    let backdropPath: String?
-    let posterPath: String?
-    let overview: String
-    let voteAverage: Double
-    let voteCount: Int
-    let runtime: Int?
-    let releaseDate: String?
-    
-    /*let genres: [MovieGenre]?
+    let video: Bool?
+    let vote_average: Double?
+    let vote_count: Int?
+
+    /*let runtime: Int?
+    let genres: [MovieGenre]?
     let credits: MovieCredit?
     let videos: MovieVideoResponse?*/
     
@@ -37,11 +43,11 @@ struct Movie: Codable {
     }()
     
     var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdrop_path ?? "")")!
     }
     
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(poster_path ?? "")")!
     }
     
     /*var genreText: String {
@@ -49,7 +55,7 @@ struct Movie: Codable {
     }
     */
     var ratingText: String {
-        let rating = Int(voteAverage)
+        let rating = Int(vote_average ?? 0)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
             return acc + "★"
         }
@@ -63,12 +69,12 @@ struct Movie: Codable {
         return "\(ratingText.count)/10"
     }
     
-    var durationText: String {
+    /*var durationText: String {
         guard let runtime = self.runtime, runtime > 0 else {
             return "n/a"
         }
         return Movie.durationFormatter.string(from: TimeInterval(runtime) * 60) ?? "n/a"
-    }
+    }*/
     
     /*var cast: [MovieCast]? {
         credits?.cast
