@@ -21,6 +21,7 @@ class MovieListViewController: UIViewController {
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
+    private let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +73,8 @@ class MovieListViewController: UIViewController {
             }
         }
     }
-}
 
+}
 //MARK: -TableView Delegate & DataSource Methods
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     

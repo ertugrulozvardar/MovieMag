@@ -11,7 +11,6 @@ struct Movie: Codable {
 
     let adult: Bool?
     let backdrop_path: String?
-    //let genre_ids: [Int]?
     let id: Int
     let original_language: String?
     let original_title: String?
@@ -23,11 +22,13 @@ struct Movie: Codable {
     let video: Bool?
     let vote_average: Double?
     let vote_count: Int?
-
-    /*let runtime: Int?
+    let budget: Int?
+    let revenue: Int?
     let genres: [MovieGenre]?
-    let credits: MovieCredit?
-    let videos: MovieVideoResponse?*/
+    let runtime: Int?
+    let production_companies: [ProductionCompany]?
+    let homepage: URL?
+    
     
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -50,10 +51,10 @@ struct Movie: Codable {
         return URL(string: "https://image.tmdb.org/t/p/w500\(poster_path ?? "")")!
     }
     
-    /*var genreText: String {
+    var genreText: String {
         genres?.first?.name ?? "n/a"
     }
-    */
+    
     var ratingText: String {
         let rating = Int(vote_average ?? 0)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
@@ -69,63 +70,21 @@ struct Movie: Codable {
         return "\(ratingText.count)/10"
     }
     
-    /*var durationText: String {
+    var durationText: String {
         guard let runtime = self.runtime, runtime > 0 else {
             return "n/a"
         }
         return Movie.durationFormatter.string(from: TimeInterval(runtime) * 60) ?? "n/a"
-    }*/
-    
-    /*var cast: [MovieCast]? {
-        credits?.cast
     }
-    
-    var crew: [MovieCrew]? {
-        credits?.crew
-    }
-    
-    var directors: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "director" }
-    }
-    
-    var producers: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "producer" }
-    }
-    
-    var screenWriters: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "story" }
-    }
-    
-    var youtubeTrailers: [MovieVideo]? {
+}
+
+
+/*var youtubeTrailers: [MovieVideo]? {
         videos?.results.filter { $0.youtubeURL != nil }
-    }
-    
 }*/
-
-/*struct MovieGenre: Decodable {
     
-    let name: String
-}
 
-struct MovieCredit: Decodable {
-    
-    let cast: [MovieCast]
-    let crew: [MovieCrew]
-}
-
-struct MovieCast: Decodable, Identifiable {
-    let id: Int
-    let character: String
-    let name: String
-}
-
-struct MovieCrew: Decodable, Identifiable {
-    let id: Int
-    let job: String
-    let name: String
-}
-
-struct MovieVideoResponse: Decodable {
+/*struct MovieVideoResponse: Decodable {
     
     let results: [MovieVideo]
 }
@@ -143,4 +102,4 @@ struct MovieVideo: Decodable, Identifiable {
         }
         return URL(string: "https://youtube.com/watch?v=\(key)")
     }*/
-}
+
