@@ -63,6 +63,18 @@ struct Movie: Codable {
         return ratingText
     }
     
+    var budgetText: String {
+        return "\(budget ?? 0)"
+    }
+    
+    var revenueText: String {
+        return "\(revenue ?? 0)"
+    }
+    
+    var homepageText: String {
+        return "\(String(describing: homepage))"
+    }
+    
     var scoreText: String {
         guard ratingText.count > 0 else {
             return "n/a"

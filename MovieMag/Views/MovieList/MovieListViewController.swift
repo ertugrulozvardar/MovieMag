@@ -14,7 +14,7 @@ class MovieListViewController: UIViewController {
             configureTableView()
         }
     }
-
+    
     private var movies: [Movie] = []
     private var filteredMovies = [Movie]()
     private var isFilterActive = false
@@ -30,10 +30,10 @@ class MovieListViewController: UIViewController {
     }
     
     func configureTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.prefetchDataSource = self
-        tableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.prefetchDataSource = self
+        self.tableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
     }
     
     func initSearchBar() {
@@ -98,7 +98,19 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.configure(movie: movie)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let movieDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
+            
+            if isFilterActive {
+                movieDetailsVC.movieId = filteredMovies[indexPath.row].id
+            } else {
+                movieDetailsVC.movieId = movies[indexPath.row].id
+            }
+            self.navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
+    }
 }
 
 //MARK: -UITableViewDataSourcePrefetch

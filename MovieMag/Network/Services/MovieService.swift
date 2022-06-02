@@ -10,9 +10,9 @@ import Foundation
 protocol MovieServiceProtocol {
     func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
     func searchAllMovies(searchBy searchText: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
-    func fetchMovie(id: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
-    func fetchCasts(id: String, completion: @escaping (Result<Credits, NetworkError>) -> Void)
-    func fetchRecommendations(id: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func fetchMovie(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void)
+    func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
 }
 
 struct MovieService: MovieServiceProtocol {
@@ -30,17 +30,17 @@ struct MovieService: MovieServiceProtocol {
         network.performRequest(request: urlRequest, completion: completion)
     }
     
-    func fetchMovie(id: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
+    func fetchMovie(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
     }
     
-    func fetchCasts(id: String, completion: @escaping (Result<Credits, NetworkError>) -> Void) {
+    func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
     }
     
-    func fetchRecommendations(id: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
+    func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)/recommendations?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
     }
