@@ -79,6 +79,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 movie = movies[indexPath.row]
             }
+        
+        cell.changeStatus(movie: movie)
         cell.configure(movie: movie)
         return cell
         }

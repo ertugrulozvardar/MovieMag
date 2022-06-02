@@ -67,6 +67,9 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
                                     <color key="baseForegroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addFavoritePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ijt-pn-PeO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -85,6 +88,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addFavoriteIcon" destination="tby-ca-hIo" id="L8h-Yb-5Ct"/>
                 <outlet property="movieImageView" destination="chB-Cx-Z6G" id="OQW-sn-ih3"/>
                 <outlet property="movieNameLabel" destination="pBY-PD-See" id="XQd-NC-5KU"/>
                 <outlet property="movieRatingLabel" destination="WgV-Wa-Y7o" id="Vgq-oT-3Bl"/>
