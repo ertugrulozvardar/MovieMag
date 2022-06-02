@@ -10,7 +10,6 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
-    private var favoriteMovies = [Movie]()
     private var status: Bool = false
     private var statusMovie: Movie?
     
@@ -24,33 +23,33 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var addFavoriteIcon: UIButton!
+    private var favoriteMovies = [Movie]()
+    
+    var movie: Movie?
+    let userDefaults = UserDefaults.standard
     
     func configure(movie: Movie) {
+        self.movie = movie
         movieImageView.kf.setImage(with: movie.posterURL)
         movieNameLabel.text = movie.title
         releaseDateLabel.text = movie.release_date
         movieRatingLabel.text = movie.ratingText    
     }
-    func saveToFavorites(movie: Movie) {
-        favoriteMovies.append(movie)
-        let userDefaults = UserDefaults.standard
-        if let data = try? PropertyListEncoder().encode(favoriteMovies) {
-            userDefaults.set(data, forKey: "FavoriteMovies")
-        }
-    }
     
-    func changeStatus(movie: Movie) {
-        status = true
-        statusMovie = movie
-        
+    func saveToFavorites() {
+            if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
+                favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
+                favoriteMovies.append(movie!)
+                if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
+                    userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
+                }
+            }
     }
-    
+
     @IBAction func addFavoritePressed(_ sender: UIButton) {
         if sender.currentImage == UIImage(systemName: "star") {
             sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            if status {
-                saveToFavorites(movie: statusMovie!)
-            }
+            saveToFavorites()
         } else {
             sender.setImage(UIImage(systemName: "star"), for: .normal)
         }

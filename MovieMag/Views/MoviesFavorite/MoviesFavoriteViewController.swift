@@ -9,12 +9,21 @@ import UIKit
 
 class MoviesFavoriteViewController: UIViewController {
 
-    @IBOutlet weak var favoritesTableView: UITableView!
+    @IBOutlet weak var favoritesTableView: UITableView! {
+        didSet {
+            configureTableView()
+        }
+    }
     
     private var favoriteMovies = [Movie]()
+    let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getFavorites()
     }
     
@@ -25,9 +34,9 @@ class MoviesFavoriteViewController: UIViewController {
     }
     
     func getFavorites() {
-        let userDefaults = UserDefaults.standard
         if let data = userDefaults.data(forKey: "FavoriteMovies") {
             favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: data)
+            favoritesTableView.reloadData()
         }
     }
 }

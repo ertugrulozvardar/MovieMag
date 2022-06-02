@@ -18,6 +18,7 @@ class MovieListViewController: UIViewController {
     private var movies: [Movie] = []
     private var filteredMovies = [Movie]()
     private var isFilterActive = false
+    public var favoriteMovies = [Movie]()
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
@@ -42,7 +43,7 @@ class MovieListViewController: UIViewController {
         searchBar.tintColor = UIColor.lightGray
         self.tableView.tableHeaderView = searchBar
     }
-    
+        
     func fetchMovies() {
         isFetchingMovies = true
         movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
@@ -79,12 +80,10 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 movie = movies[indexPath.row]
             }
-        
-        cell.changeStatus(movie: movie)
+
         cell.configure(movie: movie)
         return cell
         }
-        
 }
 
 //MARK: -UITableViewDataSourcePrefetch
