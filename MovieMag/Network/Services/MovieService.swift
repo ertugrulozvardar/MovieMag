@@ -9,6 +9,7 @@ import Foundation
 
 protocol MovieServiceProtocol {
     func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func searchAllMovies(searchBy searchText: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
 }
 
 struct MovieService: MovieServiceProtocol {
@@ -20,4 +21,9 @@ struct MovieService: MovieServiceProtocol {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&page=\(page)")!)
             network.performRequest(request: urlRequest, completion: completion)
         }
+    
+    func searchAllMovies(searchBy searchText: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
+        let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&query=\(searchText)")!)
+        network.performRequest(request: urlRequest, completion: completion)
+    }
 }

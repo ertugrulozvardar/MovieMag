@@ -18,7 +18,6 @@ class MovieListViewController: UIViewController {
     private var movies: [Movie] = []
     private var filteredMovies = [Movie]()
     private var isFilterActive = false
-    public var favoriteMovies = [Movie]()
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
@@ -50,6 +49,21 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results!)
+                self?.tableView.reloadData()
+                self?.currentPage += 1
+                self?.isFetchingMovies = false
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func searchMovies(searchText: String) {
+        isFetchingMovies = true
+        movieService.searchAllMovies(searchBy: searchText) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.filteredMovies.append(contentsOf: response.results!)
                 self?.tableView.reloadData()
                 self?.currentPage += 1
                 self?.isFetchingMovies = false
@@ -104,9 +118,7 @@ extension MovieListViewController: UISearchBarDelegate {
             fetchMovies()
         }
         else {
-            filteredMovies = movies.filter({ movie in
-                return movie.title.range(of: searchText, options: [ .caseInsensitive ]) != nil
-            })
+            searchMovies(searchText: searchText)
         }
         isFilterActive = true
         self.tableView.reloadData()

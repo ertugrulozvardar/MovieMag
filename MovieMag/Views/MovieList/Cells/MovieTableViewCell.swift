@@ -43,6 +43,11 @@ class MovieTableViewCell: UITableViewCell {
                 if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
                     userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
                 }
+            } else {
+                let array = [movie!]
+                if let setFavMovies = try? PropertyListEncoder().encode(array) {
+                    userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
+                }
             }
     }
 
