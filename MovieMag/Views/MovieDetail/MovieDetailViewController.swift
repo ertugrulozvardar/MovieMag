@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
 
@@ -25,7 +26,7 @@ class MovieDetailViewController: UIViewController {
     
     var movieId: Int?
     private let movieService: MovieServiceProtocol = MovieService()
-    private var movies: [Movie] = []
+    private var movieDetail: MovieDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,8 @@ class MovieDetailViewController: UIViewController {
             movieService.fetchMovie(id: id) { result in
                 switch result {
                 case .success(let response):
-                    self.movies = response.results ?? []
-                    self.updateUIElements(movies: self.movies)
+                    self.movieDetail = response
+                    self.updateUIElements(movieDetail: self.movieDetail!)
                 case .failure(let error):
                     print(error)
                 }
@@ -51,20 +52,20 @@ class MovieDetailViewController: UIViewController {
     }
     
     
-    func updateUIElements(movies: [Movie]) {
-        movieImageView.kf.setImage(with: movies.first?.posterURL)
-        movieNameLabel.text = movies.first?.title
-        releaseDateLabel.text = movies.first?.release_date
-        durationLabel.text = movies.first?.durationText
-        originalTitleLabel.text = movies.first?.original_title
-        originalLanguageLabel.text = movies.first?.original_language
-        ratingLabel.text = movies.first?.ratingText
-        genresLabel.text = movies.first?.genreText
-        budgetLabel.text = movies.first?.budgetText
-        revenueLabel.text = movies.first?.revenueText
+    func updateUIElements(movieDetail: MovieDetail) {
+        movieImageView.kf.setImage(with: movieDetail.posterURL)
+        movieNameLabel.text = movieDetail.title
+        releaseDateLabel.text = movieDetail.release_date
+        durationLabel.text = movieDetail.durationText
+        originalTitleLabel.text = movieDetail.original_title
+        //originalLanguageLabel.text = movie.original_language
+        ratingLabel.text = movieDetail.ratingText
+        genresLabel.text = movieDetail.genreText
+        budgetLabel.text = movieDetail.budgetText
+        revenueLabel.text = movieDetail.revenueText
         //productionCompaniesLabel.text = movies.first?.pr
-        homepageLabel.text = movies.first?.homepageText
-        overviewLabel.text = movies.first?.overview
+        homepageLabel.text = movieDetail.homepage
+        overviewLabel.text = movieDetail.overview
     }
 }
     

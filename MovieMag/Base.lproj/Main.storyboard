@@ -20,15 +20,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="TmJ-1b-rPH" kind="relationship" relationship="viewControllers" id="HIz-sw-RZ1"/>
-                        <segue destination="jGe-rt-k7X" kind="relationship" relationship="viewControllers" id="dDT-gy-Lin"/>
+                        <segue destination="MFG-9f-Jej" kind="relationship" relationship="viewControllers" id="HIz-sw-RZ1"/>
+                        <segue destination="voJ-Vd-qd6" kind="relationship" relationship="viewControllers" id="dDT-gy-Lin"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8r-e0-73X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-265" y="124"/>
         </scene>
-        <!--All Movies-->
+        <!--Movie List View Controller-->
         <scene sceneID="1Nc-gt-VXT">
             <objects>
                 <viewController storyboardIdentifier="MovieListViewController" id="TmJ-1b-rPH" customClass="MovieListViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ddH-fc-Pe7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.0094235306610000007" green="0.03952645883" blue="0.05119276792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
@@ -51,14 +51,14 @@
                             <constraint firstItem="ty2-Lk-uwN" firstAttribute="trailing" secondItem="ddH-fc-Pe7" secondAttribute="trailing" id="ixJ-nH-gno"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="All Movies" id="SjF-s6-9Be"/>
+                    <navigationItem key="navigationItem" id="080-sE-WPo"/>
                     <connections>
                         <outlet property="tableView" destination="ddH-fc-Pe7" id="46g-nm-cfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMT-82-8iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="-216"/>
+            <point key="canvasLocation" x="1534.7826086956522" y="-216.29464285714286"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="Rtz-aQ-gPg">
@@ -330,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vd9-JT-6Qf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489.8550724637682" y="-216.29464285714286"/>
+            <point key="canvasLocation" x="2400" y="-216.29464285714286"/>
         </scene>
         <!--Cast Detail View Controller-->
         <scene sceneID="ppY-R2-ltd">
@@ -345,9 +345,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3S-GI-cJV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1490" y="521"/>
+            <point key="canvasLocation" x="2400" y="520.98214285714289"/>
         </scene>
-        <!--Favorite Movies-->
+        <!--Movies Favorite View Controller-->
         <scene sceneID="jsI-VH-4XE">
             <objects>
                 <viewController storyboardIdentifier="MoviesFavoriteViewController" id="jGe-rt-k7X" customClass="MoviesFavoriteViewController" customModule="MovieMag" customModuleProvider="target" sceneMemberID="viewController">
@@ -356,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ziY-se-joY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -369,18 +369,58 @@
                             <constraint firstItem="Laj-pR-4qb" firstAttribute="trailing" secondItem="ziY-se-joY" secondAttribute="trailing" id="zTi-47-d5j"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite Movies" id="ZbQ-HV-6JL"/>
+                    <navigationItem key="navigationItem" id="nFK-V9-3NQ"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="ziY-se-joY" id="XxL-PZ-Bdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAq-Nd-f6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="626" y="521"/>
+            <point key="canvasLocation" x="1534.7826086956522" y="520.98214285714289"/>
+        </scene>
+        <!--All Movies-->
+        <scene sceneID="EbL-PF-jQn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MFG-9f-Jej" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="All Movies" selectedImage="list.dash" catalog="system" id="SjF-s6-9Be"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oVL-zj-3XR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TmJ-1b-rPH" kind="relationship" relationship="rootViewController" id="Ki7-wi-wFK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGJ-zT-IvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624.63768115942037" y="-216.29464285714286"/>
+        </scene>
+        <!--Favorite Movies-->
+        <scene sceneID="n8A-eA-HQd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="voJ-Vd-qd6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite Movies" image="star.fill" catalog="system" id="ZbQ-HV-6JL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dJu-83-if2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jGe-rt-k7X" kind="relationship" relationship="rootViewController" id="u5k-Jf-OCX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6f-nl-JE8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624.63768115942037" y="520.98214285714289"/>
         </scene>
     </scenes>
     <resources>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="morbius.jpeg" width="187" height="269"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
