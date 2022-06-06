@@ -129,6 +129,7 @@ extension MovieListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             fetchMovies()
+            print("Test")
         }
         else {
             searchMovies(searchText: searchText)
