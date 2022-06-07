@@ -50,6 +50,21 @@ class MovieTableViewCell: UITableViewCell {
                 }
             }
     }
+    
+    func removeFromFavorites() {
+        if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
+            favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
+            if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
+                userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
+            }
+        } else {
+            let array = [movie!]
+            if let setFavMovies = try? PropertyListEncoder().encode(array) {
+                userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
+            }
+        }
+        
+    }
 
     @IBAction func addFavoritePressed(_ sender: UIButton) {
         if sender.currentImage == UIImage(systemName: "star") {
@@ -57,6 +72,7 @@ class MovieTableViewCell: UITableViewCell {
             saveToFavorites()
         } else {
             sender.setImage(UIImage(systemName: "star"), for: .normal)
+            removeFromFavorites()
         }
     }
 }
