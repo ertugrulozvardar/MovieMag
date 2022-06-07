@@ -9,7 +9,7 @@ import Foundation
 
 protocol MovieServiceProtocol {
     func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
-    func searchAllMovies(searchBy searchText: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func searchAllMovies(with searchQuery: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
     func fetchMovie(id: Int, completion: @escaping (Result<MovieDetail, NetworkError>) -> Void)
     func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void)
     func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
@@ -25,8 +25,13 @@ struct MovieService: MovieServiceProtocol {
             network.performRequest(request: urlRequest, completion: completion)
     }
     
-    func searchAllMovies(searchBy searchText: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
-        let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&query=\(searchText)")!)
+    func searchAllMovies(with searchQuery: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
+        guard !searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            return
+        }
+        let url = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(searchQuery)"
+        let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let urlRequest = URLRequest(url: URL(string: encodedUrl!)!)
         network.performRequest(request: urlRequest, completion: completion)
     }
     

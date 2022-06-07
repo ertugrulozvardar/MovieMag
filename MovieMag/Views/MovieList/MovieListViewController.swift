@@ -15,9 +15,9 @@ class MovieListViewController: UIViewController {
         }
     }
     
+    lazy var searchVC = UISearchController(searchResultsController: nil)
+    
     private var movies: [Movie] = []
-    private var filteredMovies = [Movie]()
-    private var isFilterActive = false
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
@@ -37,11 +37,10 @@ class MovieListViewController: UIViewController {
     }
     
     func initSearchBar() {
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-        searchBar.delegate = self
-        searchBar.showsScopeBar = true
-        searchBar.tintColor = UIColor.lightGray
-        self.tableView.tableHeaderView = searchBar
+        navigationItem.searchController = searchVC
+        searchVC.obscuresBackgroundDuringPresentation = false
+        searchVC.searchBar.placeholder = "Search Movies.."
+        searchVC.searchBar.delegate = self
     }
         
     func fetchMovies() {
@@ -49,25 +48,29 @@ class MovieListViewController: UIViewController {
         movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.movies.append(contentsOf: response.results!)
-                self?.tableView.reloadData()
-                self?.currentPage += 1
-                self?.isFetchingMovies = false
+                self?.movies.append(contentsOf: response.results ?? [])
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.currentPage += 1
+                    self?.isFetchingMovies = false
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    func searchMovies(searchText: String) {
+    func searchMovies(searchQuery: String) {
         isFetchingMovies = true
-        movieService.searchAllMovies(searchBy: searchText) { [weak self] result in
+        movieService.searchAllMovies(with: searchQuery) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.filteredMovies.append(contentsOf: response.results!)
-                self?.tableView.reloadData()
-                self?.currentPage += 1
-                self?.isFetchingMovies = false
+                self?.movies = response.results ?? []
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.currentPage += 1
+                    self?.isFetchingMovies = false
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -79,22 +82,14 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if isFilterActive {
-                return filteredMovies.count
-            } else {
                 return movies.count
-            }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
 
         let movie: Movie
-            if isFilterActive {
-                movie = filteredMovies[indexPath.row]
-            } else {
-                movie = movies[indexPath.row]
-            }
+        movie = movies[indexPath.row]
 
         cell.configure(movie: movie)
         return cell
@@ -103,11 +98,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let movieDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
             
-            if isFilterActive {
-                movieDetailsVC.movieId = filteredMovies[indexPath.row].id
-            } else {
-                movieDetailsVC.movieId = movies[indexPath.row].id
-            }
+            movieDetailsVC.movieId = movies[indexPath.row].id
             self.navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
     }
@@ -117,7 +108,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 extension MovieListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= movies.count - 3 && !isFetchingMovies {
+            if index.row >= movies.count - 1 && !isFetchingMovies {
                 fetchMovies()
                 break
             }
@@ -126,15 +117,11 @@ extension MovieListViewController: UITableViewDataSourcePrefetching {
 }
 //MARK: -SearchBar Delegate Methods
 extension MovieListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            fetchMovies()
-            print("Test")
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            return
         }
-        else {
-            searchMovies(searchText: searchText)
-        }
-        isFilterActive = true
-        self.tableView.reloadData()
+        searchMovies(searchQuery: text)
     }
 }
+
