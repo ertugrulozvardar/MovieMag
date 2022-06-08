@@ -11,72 +11,69 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="241" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="MovieMag" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="542" height="241"/>
+        <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="550" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="MovieMag" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="715" height="550"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="542" height="241"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="715" height="550"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VN5-QV-Dqu">
-                        <rect key="frame" x="15" y="15" width="550" height="250"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VN5-QV-Dqu">
+                        <rect key="frame" x="15" y="15" width="393.5" height="520"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="morbius.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="chB-Cx-Z6G">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="250"/>
+                                <rect key="frame" x="0.0" y="135" width="150" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="HTm-sh-riL"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="Yad-Mh-Kbs"/>
+                                    <constraint firstAttribute="width" constant="150" id="Yad-Mh-Kbs"/>
+                                    <constraint firstAttribute="width" secondItem="chB-Cx-Z6G" secondAttribute="height" multiplier="150:250" id="mxq-2G-LjX"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3mF-gv-Uht">
-                                <rect key="frame" x="115" y="68.5" width="320" height="113.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3mF-gv-Uht">
+                                <rect key="frame" x="165" y="196.5" width="173.5" height="127"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morbius" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-PD-See">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="23"/>
                                         <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="23"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-04-06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6C-W6-rP5">
-                                        <rect key="frame" x="0.0" y="44.5" width="126.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="21"/>
+                                        <rect key="frame" x="0.0" y="33" width="173.5" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="19"/>
                                         <color key="textColor" systemColor="systemGray5Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7113" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgV-Wa-Y7o">
-                                        <rect key="frame" x="0.0" y="89" width="36.5" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="65.5" width="173.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-J0-Co9">
+                                        <rect key="frame" x="0.0" y="96" width="173.5" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="PyI-vw-ne5"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add Movie To Favorites"/>
+                                        <connections>
+                                            <action selector="addFavoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YSe-ev-Bi0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="pBY-PD-See" secondAttribute="trailing" id="MHq-0v-7zu"/>
-                                    <constraint firstItem="pBY-PD-See" firstAttribute="leading" secondItem="3mF-gv-Uht" secondAttribute="leading" id="cgC-n6-llb"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="270" id="wAJ-dx-xmp"/>
-                                    <constraint firstItem="pBY-PD-See" firstAttribute="top" secondItem="3mF-gv-Uht" secondAttribute="top" id="x27-Sm-wJl"/>
-                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tby-ca-hIo">
-                                <rect key="frame" x="450" y="87.5" width="100" height="75"/>
+                                <rect key="frame" x="353.5" y="244.5" width="40" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="eOf-O6-PSF"/>
-                                    <constraint firstAttribute="width" constant="100" id="lfx-O8-Qiy"/>
+                                    <constraint firstAttribute="width" constant="40" id="rri-fe-9dr"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
                                     <color key="baseForegroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="addFavoritePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ijt-pn-PeO"/>
-                                </connections>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="250" id="EqS-Vf-gdR"/>
-                            <constraint firstAttribute="width" constant="550" id="jpl-Ka-YhA"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <color key="backgroundColor" red="0.34241169690000001" green="0.15707257390000001" blue="0.34815341230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,12 +87,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addFavoriteIcon" destination="tby-ca-hIo" id="L8h-Yb-5Ct"/>
+                <outlet property="addFavoritesButton" destination="3mF-gv-Uht" id="jOQ-ns-b5W"/>
                 <outlet property="movieImageView" destination="chB-Cx-Z6G" id="OQW-sn-ih3"/>
                 <outlet property="movieNameLabel" destination="pBY-PD-See" id="XQd-NC-5KU"/>
                 <outlet property="movieRatingLabel" destination="WgV-Wa-Y7o" id="Vgq-oT-3Bl"/>
                 <outlet property="releaseDateLabel" destination="c6C-W6-rP5" id="GEe-tg-9Dz"/>
             </connections>
-            <point key="canvasLocation" x="-221.73913043478262" y="132.92410714285714"/>
+            <point key="canvasLocation" x="234.05797101449278" y="210.26785714285714"/>
         </tableViewCell>
     </objects>
     <resources>
