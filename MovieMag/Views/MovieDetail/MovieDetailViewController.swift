@@ -161,6 +161,13 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             return recommendationsCell
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
+            
+            castDetailsVC.castId = castMembers[indexPath.row].id
+            self.navigationController?.pushViewController(castDetailsVC, animated: true)
+        }
+    }
     
     /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds

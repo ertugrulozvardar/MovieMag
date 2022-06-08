@@ -373,13 +373,144 @@
                     <view key="view" contentMode="scaleToFill" id="gyU-Id-lMh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fG-tx-nFP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSa-zt-jD7">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="807"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hugh Jackman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnk-dz-bJz">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="wCh-PA-Lhq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="50e-OR-vT1">
+                                                <rect key="frame" x="0.0" y="55" width="414" height="414"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="50e-OR-vT1" secondAttribute="height" multiplier="1:1" id="gZc-Hb-CPO"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Vnk-dz-bJz" firstAttribute="trailing" secondItem="50e-OR-vT1" secondAttribute="trailing" id="5yM-sI-dTY"/>
+                                            <constraint firstItem="Vnk-dz-bJz" firstAttribute="leading" secondItem="50e-OR-vT1" secondAttribute="leading" id="Xz8-TC-5ng"/>
+                                            <constraint firstItem="50e-OR-vT1" firstAttribute="top" secondItem="JSa-zt-jD7" secondAttribute="top" constant="55" id="hBR-zd-ecC"/>
+                                            <constraint firstItem="50e-OR-vT1" firstAttribute="leading" secondItem="JSa-zt-jD7" secondAttribute="leading" id="nII-Ox-2cW"/>
+                                            <constraint firstAttribute="trailing" secondItem="50e-OR-vT1" secondAttribute="trailing" id="otz-NG-lvx"/>
+                                            <constraint firstItem="Vnk-dz-bJz" firstAttribute="top" secondItem="JSa-zt-jD7" secondAttribute="top" id="qSt-m6-m84"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="MA5-Qf-ayA">
+                                        <rect key="frame" x="12" y="479" width="394" height="300"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1pi-Eu-9VZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text=" Born:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZO-Yr-ZiV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="51.5" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="15-09-1973" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-vK-muy">
+                                                        <rect key="frame" x="56.5" y="0.0" width="337.5" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PRQ-Gv-zfm">
+                                                <rect key="frame" x="0.0" y="54" width="394" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Birthplace:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc0-fj-xii">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Modesto, California, USA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT8-K8-Zz7">
+                                                        <rect key="frame" x="99" y="0.0" width="295" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-Md-rDN">
+                                                <rect key="frame" x="0.0" y="108" width="394" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Died:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0D-hh-SIR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="15-09-1973" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2y-GW-9Zf">
+                                                        <rect key="frame" x="51" y="0.0" width="343" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biography" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sV-2c-eRo">
+                                                <rect key="frame" x="0.0" y="162" width="394" height="26.5"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                <color key="textColor" systemColor="systemGray6Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH0-kz-k42">
+                                                <rect key="frame" x="0.0" y="218.5" width="394" height="81.5"/>
+                                                <string key="text">A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Morphius and his friends..</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="MA5-Qf-ayA" secondAttribute="bottom" constant="28" id="0Fk-Ba-Lib"/>
+                                    <constraint firstItem="JSa-zt-jD7" firstAttribute="leading" secondItem="3fG-tx-nFP" secondAttribute="leading" id="4sV-Kk-k0M"/>
+                                    <constraint firstItem="MA5-Qf-ayA" firstAttribute="leading" secondItem="3fG-tx-nFP" secondAttribute="leading" constant="12" id="E0R-f3-etd"/>
+                                    <constraint firstItem="MA5-Qf-ayA" firstAttribute="top" secondItem="50e-OR-vT1" secondAttribute="bottom" constant="10" id="OtB-fc-lQM"/>
+                                    <constraint firstAttribute="trailing" secondItem="MA5-Qf-ayA" secondAttribute="trailing" constant="8" id="d7v-hZ-pyK"/>
+                                    <constraint firstAttribute="bottom" secondItem="JSa-zt-jD7" secondAttribute="bottom" id="ltW-LD-cH1"/>
+                                    <constraint firstAttribute="trailing" secondItem="JSa-zt-jD7" secondAttribute="trailing" id="vps-qM-57l"/>
+                                    <constraint firstItem="JSa-zt-jD7" firstAttribute="top" secondItem="3fG-tx-nFP" secondAttribute="top" id="zFP-GL-KnO"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JgK-Jn-kdb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JgK-Jn-kdb" firstAttribute="trailing" secondItem="3fG-tx-nFP" secondAttribute="trailing" id="6V5-72-d4u"/>
+                            <constraint firstItem="JSa-zt-jD7" firstAttribute="width" secondItem="gyU-Id-lMh" secondAttribute="width" id="MwV-fz-4hb"/>
+                            <constraint firstAttribute="bottom" secondItem="3fG-tx-nFP" secondAttribute="bottom" id="Phr-Ma-O9f"/>
+                            <constraint firstItem="3fG-tx-nFP" firstAttribute="leading" secondItem="JgK-Jn-kdb" secondAttribute="leading" id="SVA-6M-MVY"/>
+                            <constraint firstItem="3fG-tx-nFP" firstAttribute="top" secondItem="JgK-Jn-kdb" secondAttribute="top" id="rCA-fF-IRt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actorBiographyLabel" destination="aH0-kz-k42" id="05d-lf-YuR"/>
+                        <outlet property="actorBirthPlaceLabel" destination="PT8-K8-Zz7" id="Kew-rw-g28"/>
+                        <outlet property="actorBirthdayLabel" destination="pjj-vK-muy" id="qIY-He-0hU"/>
+                        <outlet property="actorDeathDayLabel" destination="O2y-GW-9Zf" id="WEv-Rp-2xZ"/>
+                        <outlet property="actorImageView" destination="50e-OR-vT1" id="hZ4-nX-bec"/>
+                        <outlet property="actorNameLabel" destination="Vnk-dz-bJz" id="cwg-hY-pCh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3S-GI-cJV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2400" y="520.98214285714289"/>
+            <point key="canvasLocation" x="2398.5507246376815" y="520.98214285714289"/>
         </scene>
         <!--Movies Favorite View Controller-->
         <scene sceneID="jsI-VH-4XE">
@@ -478,6 +609,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

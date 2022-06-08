@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CastDetail {
+struct CastDetail: Codable{
     
     let also_known_as: [String]?
     let biography: String?

@@ -13,6 +13,7 @@ protocol MovieServiceProtocol {
     func fetchMovie(id: Int, completion: @escaping (Result<MovieDetail, NetworkError>) -> Void)
     func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void)
     func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void)
+    func fetchSingleCast(castId: Int, completion: @escaping (Result<CastDetail, NetworkError>) -> Void)
 }
 
 struct MovieService: MovieServiceProtocol {
@@ -47,6 +48,11 @@ struct MovieService: MovieServiceProtocol {
     
     func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)/recommendations?api_key=\(apiKey)")!)
+            network.performRequest(request: urlRequest, completion: completion)
+    }
+    
+    func fetchSingleCast(castId: Int, completion: @escaping (Result<CastDetail, NetworkError>) -> Void) {
+            let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/person/\(castId)?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
     }
 }
