@@ -12,6 +12,8 @@ class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var recommendationsView: UICollectionView!
     
+    @IBOutlet weak var castView: UICollectionView!
+    
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -30,16 +32,19 @@ class MovieDetailViewController: UIViewController {
     private let movieService: MovieServiceProtocol = MovieService()
     private var movieDetail: MovieDetail?
     private var recommendedMovies: [Movie] = []
+    private var castMembers: [Cast] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getMovieDetail()
         getRecommendations()
-        configureRecommendationCollection()
+        getCastMembers()
+        registerCollectionCells()
     }
     
-    func configureRecommendationCollection() {
+    func registerCollectionCells() {
         recommendationsView.register(UINib(nibName: "RecommendationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendationCollectionViewCell")
+        castView.register(UINib(nibName: "CastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CastCollectionViewCell")
     }
     
     func getMovieDetail() {
@@ -84,6 +89,27 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    func getCastMembers() {
+        if let id = movieId {
+            movieService.fetchCasts(id: id) { result in
+                switch result {
+                case .success(let response):
+                    self.castMembers = response.cast ?? []
+                    self.castView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            let alertController = UIAlertController(title: "Hata!", message: "Karakter bulunamadı", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true)
+        }
+    }
+    
     
     func updateUIElements(movieDetail: MovieDetail) {
         movieImageView.kf.setImage(with: movieDetail.posterURL)
@@ -106,20 +132,40 @@ class MovieDetailViewController: UIViewController {
 //MARK: -UICollectionView Methods
 extension MovieDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommendedMovies.count
+        switch collectionView {
+        case recommendationsView:
+            return recommendedMovies.count
+        case castView:
+            return castMembers.count
+        default:
+            return 1
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCollectionViewCell" , for: indexPath) as! RecommendationCollectionViewCell
-        
-        let recommendedMovie: Movie
-        recommendedMovie = recommendedMovies[indexPath.row]
-        cell.configure(recommendedMovie: recommendedMovie)
-        return cell
+        switch collectionView {
+        case recommendationsView:
+            let recommendationsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCollectionViewCell" , for: indexPath) as! RecommendationCollectionViewCell
+            let recommendedMovie: Movie
+            recommendedMovie = recommendedMovies[indexPath.row]
+            recommendationsCell.configure(recommendedMovie: recommendedMovie)
+            return recommendationsCell
+        case castView:
+            let castCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCollectionViewCell" , for: indexPath) as! CastCollectionViewCell
+            let cast: Cast
+            cast = castMembers[indexPath.row]
+            castCell.configure(cast: cast)
+            return castCell
+        default:
+            let recommendationsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCollectionViewCell" , for: indexPath) as! RecommendationCollectionViewCell
+            return recommendationsCell
+        }
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width / 2, height: collectionView.frame.height / 2)
-    }
+    
+    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let bounds = collectionView.bounds
+        return CGSize(width: bounds.width / 2 - 20, height: bounds.height / 4)
+    }*/
 }
 
 

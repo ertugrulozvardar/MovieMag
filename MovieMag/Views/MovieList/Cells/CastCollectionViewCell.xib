@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CastCollectionViewCell" id="gTV-IL-0wX" customClass="CastCollectionViewCell" customModule="MovieMag" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="3yH-lC-cdS">
+                        <rect key="frame" x="10" y="10" width="290" height="90"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7kE-Fr-tCT">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="BFN-rl-I6G"/>
+                                    <constraint firstAttribute="width" constant="80" id="nla-qt-kZg"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7oo-lg-etN">
+                                <rect key="frame" x="103" y="18.5" width="187" height="53.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peter Parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUI-rb-cJA">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hugh Jackman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIB-R3-Qns">
+                                        <rect key="frame" x="0.0" y="35.5" width="187" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3yH-lC-cdS" secondAttribute="trailing" id="KcW-ml-FpT"/>
+                <constraint firstItem="3yH-lC-cdS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="gJT-4T-Xxl"/>
+                <constraint firstAttribute="bottom" secondItem="3yH-lC-cdS" secondAttribute="bottom" constant="10" id="gzQ-Zn-7yz"/>
+                <constraint firstItem="3yH-lC-cdS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ymk-Bk-K1E"/>
+            </constraints>
+            <size key="customSize" width="300" height="110"/>
+            <connections>
+                <outlet property="actorNameLabel" destination="sIB-R3-Qns" id="74B-Cs-2T9"/>
+                <outlet property="castImageView" destination="7kE-Fr-tCT" id="C3r-iQ-Rnw"/>
+                <outlet property="characterNameLabel" destination="RUI-rb-cJA" id="eW2-AD-iN9"/>
+            </connections>
+            <point key="canvasLocation" x="-159.42028985507247" y="102.45535714285714"/>
+        </collectionViewCell>
+    </objects>
+</document>
