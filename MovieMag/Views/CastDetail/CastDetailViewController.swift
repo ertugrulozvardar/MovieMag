@@ -52,7 +52,11 @@ class CastDetailViewController: UIViewController {
         actorNameLabel.text = castDetail.name
         actorBirthdayLabel.text = castDetail.birthday
         actorBirthPlaceLabel.text = castDetail.place_of_birth
-        actorDeathDayLabel.text = castDetail.deathday
+        if let deathDayInfo = castDetail.deathday {
+            actorDeathDayLabel.text = deathDayInfo
+        } else {
+            actorDeathDayLabel.text = "Alive"
+        }
         actorBiographyLabel.text = castDetail.biography
     }
 

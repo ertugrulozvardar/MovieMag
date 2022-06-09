@@ -10,7 +10,6 @@ import Kingfisher
 
 class RecommendationCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var recommendationContainerView: UIView!
     @IBOutlet weak var recommendedMovieImageView: UIImageView!
     
     var recommendedMovie: Movie?

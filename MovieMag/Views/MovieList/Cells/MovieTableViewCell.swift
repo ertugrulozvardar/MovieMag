@@ -25,10 +25,11 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var addFavoriteIcon: UIButton!
     @IBOutlet weak var addFavoritesButton: UIStackView!
-    private var favoriteMovies = [Movie]()
     
+    private var favoriteMovies = [Movie]()
     var movie: Movie?
     let userDefaults = UserDefaults.standard
+    var isHideFavoriteButton: Bool? = false
     
     func configure(movie: Movie) {
         self.movie = movie

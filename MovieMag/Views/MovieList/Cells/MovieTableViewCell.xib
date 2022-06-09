@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tby-ca-hIo">
-                                <rect key="frame" x="353.5" y="244.5" width="40" height="31"/>
+                                <rect key="frame" x="353.5" y="243" width="40" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="rri-fe-9dr"/>
                                 </constraints>
