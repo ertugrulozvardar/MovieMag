@@ -166,15 +166,26 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             castCell.configure(cast: cast)
             return castCell
         default:
-            let recommendationsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCollectionViewCell" , for: indexPath) as! RecommendationCollectionViewCell
-            return recommendationsCell
+            let castCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCollectionViewCell" , for: indexPath) as! CastCollectionViewCell
+            let cast: Cast
+            cast = castMembers[indexPath.row]
+            castCell.configure(cast: cast)
+            return castCell
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
-            
-            castDetailsVC.castId = castMembers[indexPath.row].id
-            self.navigationController?.pushViewController(castDetailsVC, animated: true)
+        if collectionView == castView {
+            if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
+
+                castDetailsVC.castId = castMembers[indexPath.row].id
+                self.navigationController?.pushViewController(castDetailsVC, animated: true)
+            }
+        } else {
+            if let movieDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
+
+                movieDetailsVC.movieId = recommendedMovies[indexPath.row].id
+                self.navigationController?.pushViewController(movieDetailsVC, animated: true)
+            }
         }
     }
     
