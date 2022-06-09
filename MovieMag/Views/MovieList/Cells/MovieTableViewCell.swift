@@ -24,8 +24,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var addFavoriteIcon: UIButton!
-    @IBOutlet weak var addFavoritesButton: UIStackView!
-    
+    @IBOutlet weak var addFavoritesButton: UIButton!
     private var favoriteMovies = [Movie]()
     var movie: Movie?
     let userDefaults = UserDefaults.standard
