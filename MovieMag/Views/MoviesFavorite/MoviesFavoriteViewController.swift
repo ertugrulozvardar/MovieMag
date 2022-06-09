@@ -15,20 +15,10 @@ class MoviesFavoriteViewController: UIViewController {
         }
     }
     
-    public var informTableForRemoval: Bool = false
     private var favoriteMovies = [Movie]()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getFavorites()
-        
-        let userDefaults = UserDefaults.standard
-        guard let data = userDefaults.array(forKey: "FavoriteMovies") as? [Movie] else {
-            return
-        }
-        favoriteMovies = data
-        favoritesTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +40,6 @@ class MoviesFavoriteViewController: UIViewController {
             favoritesTableView.reloadData()
         }
     }
-    
-    /*func updateFavoriteMovies(name: String) -> [Movie] {
-        guard let movieItems = self.getFavorites else { return [] }
-        movieItems = movieItems.filter({ $0.movieItems.name != name})
-    }*/
 }
 
 //MARK: -TableView Delegate & DataSource Methods
@@ -76,9 +61,15 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let userDefaults = UserDefaults.standard
-            favoriteMovies.remove(at: indexPath.row)
-            favoritesTableView.deleteRows(at: [indexPath], with: .fade)
-            userDefaults.set(favoriteMovies, forKey: "FavoriteMovies")
+        
+            if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
+                favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
+                favoriteMovies.remove(at: indexPath.row)
+                if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
+                    userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
+                }
+            }
+                favoritesTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
