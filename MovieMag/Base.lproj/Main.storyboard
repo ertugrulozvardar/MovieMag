@@ -557,7 +557,7 @@
         <scene sceneID="EbL-PF-jQn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MFG-9f-Jej" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Movies" selectedImage="list.dash" catalog="system" id="SjF-s6-9Be"/>
+                    <tabBarItem key="tabBarItem" title="All Movies" image="film" catalog="system" id="SjF-s6-9Be"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oVL-zj-3XR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -593,7 +593,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="film" catalog="system" width="128" height="93"/>
         <image name="morbius.jpeg" width="187" height="269"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">

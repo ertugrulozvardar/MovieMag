@@ -9,10 +9,6 @@ import UIKit
 import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
-
-    private var status: Bool = false
-    private var statusMovie: Movie?
-    public var remover: Bool = false
     
     @IBOutlet weak var movieImageView: UIImageView! {
         didSet {
@@ -28,7 +24,6 @@ class MovieTableViewCell: UITableViewCell {
     private var favoriteMovies = [Movie]()
     var movie: Movie?
     let userDefaults = UserDefaults.standard
-    var isHideFavoriteButton: Bool? = false
     
     func configure(movie: Movie) {
         self.movie = movie

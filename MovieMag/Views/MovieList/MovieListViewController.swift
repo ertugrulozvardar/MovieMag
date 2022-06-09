@@ -9,6 +9,12 @@ import UIKit
 
 class MovieListViewController: UIViewController {
     
+    private let imageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        imageView.image = UIImage(named: "AppLogo")
+        return imageView
+    }()
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             configureTableView()
@@ -25,8 +31,27 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(imageView)
         initSearchBar()
         fetchMovies()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imageView.center = view.center
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.animate()
+        }
+    }
+    
+    private func animate() {
+        UIView.animate(withDuration: 3, animations: {
+            let size = self.view.frame.size.width * 3
+            let xDifference = size - self.view.frame.size.width
+            let yDifference = self.view.frame.size.height - size
+            self.imageView.frame = CGRect(x: -(xDifference/2), y: yDifference/2, width: size, height: size)
+            self.imageView.alpha = 0
+        })
     }
     
     func configureTableView() {
@@ -76,7 +101,6 @@ class MovieListViewController: UIViewController {
             }
         }
     }
-
 }
 //MARK: -TableView Delegate & DataSource Methods
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,7 +114,6 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 
         let movie: Movie
         movie = movies[indexPath.row]
-
         cell.configure(movie: movie)
         return cell
     }
