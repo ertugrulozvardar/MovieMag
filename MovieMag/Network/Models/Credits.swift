@@ -9,5 +9,4 @@ import Foundation
 
 struct Credits: Codable {
     let cast: [Cast]?
-    let crew: [Crew]?
 }

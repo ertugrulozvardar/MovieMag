@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SafariServices
 
 class MovieDetailViewController: UIViewController {
 
@@ -25,7 +26,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var revenueLabel: UILabel!
     @IBOutlet weak var productionCompaniesLabel: UILabel!
-    @IBOutlet weak var homepageLabel: UILabel!
+    
+    @IBOutlet weak var homepageButton: UIButton!
     @IBOutlet weak var overviewLabel: UILabel!
     
     var movieId: Int?
@@ -110,6 +112,15 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func homepageButtonPressed(_ sender: UIButton) {
+        directToURL(url: movieDetail?.homepage ?? "")
+    }
+    
+    func directToURL(url: String) {
+        guard let url = URL(string: url) else { return }
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true)
+    }
     
     func updateUIElements(movieDetail: MovieDetail) {
         movieImageView.kf.setImage(with: movieDetail.posterURL)
@@ -123,10 +134,8 @@ class MovieDetailViewController: UIViewController {
         budgetLabel.text = movieDetail.budgetText
         revenueLabel.text = movieDetail.revenueText
         productionCompaniesLabel.text = movieDetail.production_companies?.first?.name
-        homepageLabel.text = movieDetail.homepage
         overviewLabel.text = movieDetail.overview
     }
-    
 }
 
 //MARK: -UICollectionView Methods

@@ -21,7 +21,6 @@ struct Cast: Codable {
     let credit_id: String?
     let order: Int?
 
-    
     var profileURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(profile_path ?? "")")!
     }

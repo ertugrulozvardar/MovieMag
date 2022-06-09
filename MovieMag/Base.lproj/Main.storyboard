@@ -72,10 +72,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTS-EG-BFF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1184.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1198.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O6j-EO-1YS">
-                                                <rect key="frame" x="15" y="429" width="384" height="740.5"/>
+                                                <rect key="frame" x="15" y="429" width="384" height="754.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dmD-jx-IKb">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="23"/>
@@ -95,7 +95,7 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Comedy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWt-TL-Yls">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Comedy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWt-TL-Yls">
                                                         <rect key="frame" x="0.0" y="33" width="384" height="20.5"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -200,29 +200,34 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ck3-IM-cCv">
-                                                        <rect key="frame" x="0.0" y="339" width="384" height="20.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Ck3-IM-cCv">
+                                                        <rect key="frame" x="0.0" y="339" width="384" height="34.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Homepage:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czb-N4-ije">
-                                                                <rect key="frame" x="0.0" y="0.0" width="188" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="34.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://www.morbius.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1O-fG-TEz">
-                                                                <rect key="frame" x="196" y="0.0" width="188" height="20.5"/>
-                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggv-te-Q2b">
+                                                                <rect key="frame" x="116.5" y="0.0" width="267.5" height="34.5"/>
+                                                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Click to official Page ➤">
+                                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="homepageButtonPressed:" destination="C8p-if-6Jc" eventType="touchUpInside" id="Dn9-w0-rvw"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3g2-z4-IVv">
-                                                        <rect key="frame" x="0.0" y="369.5" width="384" height="371"/>
+                                                        <rect key="frame" x="0.0" y="383.5" width="384" height="371"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People also liked:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFw-eh-OSM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -354,7 +359,7 @@
                         <outlet property="castView" destination="Rd6-qo-4Vb" id="jgl-Qe-gKS"/>
                         <outlet property="durationLabel" destination="JXg-oy-rDL" id="itM-VL-3la"/>
                         <outlet property="genresLabel" destination="YWt-TL-Yls" id="CbD-Qe-Llh"/>
-                        <outlet property="homepageLabel" destination="h1O-fG-TEz" id="Sjf-eD-12X"/>
+                        <outlet property="homepageButton" destination="Ggv-te-Q2b" id="TFr-K3-26b"/>
                         <outlet property="movieImageView" destination="nmm-kw-ohv" id="AUD-BW-01i"/>
                         <outlet property="movieNameLabel" destination="kzK-EX-gFJ" id="YYO-Sf-RRW"/>
                         <outlet property="originalLanguageLabel" destination="pw9-QO-J6v" id="b7b-jw-LdG"/>
@@ -385,12 +390,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSa-zt-jD7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="807"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hugh Jackman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnk-dz-bJz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jared Leto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnk-dz-bJz">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="wCh-PA-Lhq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="28"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
