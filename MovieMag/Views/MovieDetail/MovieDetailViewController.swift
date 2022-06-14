@@ -35,6 +35,7 @@ class MovieDetailViewController: UIViewController {
     private var movieDetail: MovieDetail?
     private var recommendedMovies: [Movie] = []
     private var castMembers: [Cast] = []
+    var currentLanguage = Locale.current.languageCode
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,9 @@ class MovieDetailViewController: UIViewController {
         getRecommendations()
         getCastMembers()
         registerCollectionCells()
+        if currentLanguage == "tr" {
+            initiateTranslation()
+        }
     }
     
     func registerCollectionCells() {
@@ -120,6 +124,16 @@ class MovieDetailViewController: UIViewController {
         guard let url = URL(string: url) else { return }
         let safariViewController = SFSafariViewController(url: url)
         present(safariViewController, animated: true)
+    }
+    
+    func initiateTranslation() {
+        TranslationManager.shared.translate(completion: { (translation) in
+            if let translation = translation {
+                DispatchQueue.main.async { [unowned self] in
+                    self.overviewLabel.text = translation
+                }
+            }
+        })
     }
     
     func updateUIElements(movieDetail: MovieDetail) {

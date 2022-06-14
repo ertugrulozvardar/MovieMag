@@ -29,8 +29,6 @@ struct MovieDetail: Codable {
     let vote_average: Double?
     let vote_count: Int?
     
-
-    
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"

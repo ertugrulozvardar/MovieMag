@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "2019"; ObjectID = "28o-ll-wIn"; */
+"28o-ll-wIn.text" = "2019";
+
+/* Class = "UILabel"; text = "Biography"; ObjectID = "5sV-2c-eRo"; */
+"5sV-2c-eRo.text" = "Biyografi";
+
+/* Class = "UILabel"; text = " Born:"; ObjectID = "8ZO-Yr-ZiV"; */
+"8ZO-Yr-ZiV.text" = " Doğum yılı:";
+
+/* Class = "UILabel"; text = "Birthplace:"; ObjectID = "Dc0-fj-xii"; */
+"Dc0-fj-xii.text" = "Doğum yeri:";
+
+/* Class = "UILabel"; text = "150000"; ObjectID = "ElB-4A-azx"; */
+"ElB-4A-azx.text" = "150000";
+
+/* Class = "UILabel"; text = "A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Morphius and his friends.."; ObjectID = "FIU-2y-xu5"; */
+"FIU-2y-xu5.text" = "A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Morphius and his friends..";
+
+/* Class = "UILabel"; text = "Produced by:"; ObjectID = "Fxk-Az-f3x"; */
+"Fxk-Az-f3x.text" = "Yapımcı:";
+
+/* Class = "UIButton"; configuration.title = "Click to official Page ➤"; ObjectID = "Ggv-te-Q2b"; */
+"Ggv-te-Q2b.configuration.title" = "Resmi sayfaya tıklayın ➤";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ggv-te-Q2b"; */
+"Ggv-te-Q2b.normalTitle" = "Resmi sayfaya tıklayın ➤";
+
+/* Class = "UILabel"; text = "Recommendations"; ObjectID = "IFw-eh-OSM"; */
+"IFw-eh-OSM.text" = "Tavsiye edilen filmler";
+
+/* Class = "UILabel"; text = "1 saat 25 dakika"; ObjectID = "JXg-oy-rDL"; */
+"JXg-oy-rDL.text" = "1 saat 25 dakika";
+
+/* Class = "UILabel"; text = "Budget:"; ObjectID = "Jpl-P0-DZb"; */
+"Jpl-P0-DZb.text" = "Film bütçesi:";
+
+/* Class = "UILabel"; text = "The Morbius"; ObjectID = "LEg-I5-uOT"; */
+"LEg-I5-uOT.text" = "The Morbius";
+
+/* Class = "UILabel"; text = "Pixar Studios"; ObjectID = "NtR-BG-JnB"; */
+"NtR-BG-JnB.text" = "Pixar Studios";
+
+/* Class = "UILabel"; text = "15-09-1973"; ObjectID = "O2y-GW-9Zf"; */
+"O2y-GW-9Zf.text" = "15-09-1973";
+
+/* Class = "UILabel"; text = "Modesto, California, USA"; ObjectID = "PT8-K8-Zz7"; */
+"PT8-K8-Zz7.text" = "Modesto, California, USA";
+
+/* Class = "UITabBarItem"; title = "All Movies"; ObjectID = "SjF-s6-9Be"; */
+"SjF-s6-9Be.title" = "Tüm filmler";
+
+/* Class = "UILabel"; text = "Jared Leto"; ObjectID = "Vnk-dz-bJz"; */
+"Vnk-dz-bJz.text" = "Jared Leto";
+
+/* Class = "UILabel"; text = "Comedy"; ObjectID = "YWt-TL-Yls"; */
+"YWt-TL-Yls.text" = "Comedy";
+
+/* Class = "UITabBarItem"; title = "Favorite Movies"; ObjectID = "ZbQ-HV-6JL"; */
+"ZbQ-HV-6JL.title" = "Favori Filmlerim";
+
+/* Class = "UILabel"; text = "Revenue:"; ObjectID = "Zdc-pF-qgB"; */
+"Zdc-pF-qgB.text" = "Hasılat:";
+
+/* Class = "UILabel"; text = "Died:"; ObjectID = "a0D-hh-SIR"; */
+"a0D-hh-SIR.text" = "Vefat tarihi:";
+
+/* Class = "UILabel"; text = "A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Morphius and his friends.."; ObjectID = "aH0-kz-k42"; */
+"aH0-kz-k42.text" = "A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Morphius and his friends..";
+
+/* Class = "UILabel"; text = "Homepage:"; ObjectID = "czb-N4-ije"; */
+"czb-N4-ije.text" = "Anasayfa:";
+
+/* Class = "UILabel"; text = "Overview"; ObjectID = "fnB-0W-Xzk"; */
+"fnB-0W-Xzk.text" = "Genel Bakış";
+
+/* Class = "UILabel"; text = "150000"; ObjectID = "ilI-3y-49R"; */
+"ilI-3y-49R.text" = "150000";
+
+/* Class = "UILabel"; text = "Morbius"; ObjectID = "kzK-EX-gFJ"; */
+"kzK-EX-gFJ.text" = "Morbius";
+
+/* Class = "UILabel"; text = "Movie Cast"; ObjectID = "o5y-tz-hwb"; */
+"o5y-tz-hwb.text" = "Film Kadrosu";
+
+/* Class = "UILabel"; text = "15-09-1973"; ObjectID = "pjj-vK-muy"; */
+"pjj-vK-muy.text" = "15-09-1973";
+
+/* Class = "UILabel"; text = "en"; ObjectID = "pw9-QO-J6v"; */
+"pw9-QO-J6v.text" = "en";
+
+/* Class = "UILabel"; text = "Additonal Information"; ObjectID = "qpJ-ak-r6R"; */
+"qpJ-ak-r6R.text" = "Ek Bilgiler";
+
+/* Class = "UILabel"; text = "Original Title:"; ObjectID = "ugZ-DW-2n4"; */
+"ugZ-DW-2n4.text" = "Orjinal Başlık:";
+
+/* Class = "UILabel"; text = "7.5"; ObjectID = "y8m-CN-qhT"; */
+"y8m-CN-qhT.text" = "7.5";
+
+/* Class = "UILabel"; text = "Original Language:"; ObjectID = "ynf-xE-Hi1"; */
+"ynf-xE-Hi1.text" = "Orjinal Dil:";

@@ -15,6 +15,7 @@ class CastDetailViewController: UIViewController {
     @IBOutlet weak var actorBirthPlaceLabel: UILabel!
     @IBOutlet weak var actorDeathDayLabel: UILabel!
     @IBOutlet weak var actorBiographyLabel: UILabel!
+    let currentLanguage = Locale.current.languageCode
     
     var castId: Int?
     private var castDetail: CastDetail?
@@ -55,7 +56,12 @@ class CastDetailViewController: UIViewController {
         if let deathDayInfo = castDetail.deathday {
             actorDeathDayLabel.text = deathDayInfo
         } else {
-            actorDeathDayLabel.text = "Alive"
+            if currentLanguage == "en" {
+                actorDeathDayLabel.text = "Alive"
+            } else {
+                actorDeathDayLabel.text = "Yaşıyor"
+            }
+            
         }
         actorBiographyLabel.text = castDetail.biography
     }
