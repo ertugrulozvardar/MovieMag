@@ -20,7 +20,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var addFavoriteIcon: UIButton!
-    @IBOutlet weak var addFavoritesButton: UIButton!
+    
     private var favoriteMovies = [Movie]()
     var movie: Movie?
     let userDefaults = UserDefaults.standard
@@ -36,19 +36,21 @@ class MovieTableViewCell: UITableViewCell {
     func saveToFavorites() {
             if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
                 favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
-                favoriteMovies.append(movie!)
+                if !favoriteMovies.contains(movie!) {
+                    favoriteMovies.append(movie!)
+                }
                 if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
                     userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
                 }
             } else {
-                let array = [movie!]
-                if let setFavMovies = try? PropertyListEncoder().encode(array) {
+                let newFavoriteMovies = [movie!]
+                if let setFavMovies = try? PropertyListEncoder().encode(newFavoriteMovies) {
                     userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
                 }
             }
     }
     
-    @IBAction func addFavoriteButtonPressed(_ sender: UIButton) {
+    @IBAction func addToFavoritePressed(_ sender: UIButton) {
         if addFavoriteIcon.currentImage == UIImage(systemName: "star") {
             addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
             saveToFavorites()
@@ -56,4 +58,5 @@ class MovieTableViewCell: UITableViewCell {
             addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
+    
 }

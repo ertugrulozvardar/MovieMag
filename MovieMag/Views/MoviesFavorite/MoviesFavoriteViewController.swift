@@ -54,7 +54,6 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
   
         let movie = favoriteMovies[indexPath.row]
         cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        cell.addFavoritesButton.isHidden = true
         cell.configure(movie: movie)
         return cell
     }

@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VN5-QV-Dqu">
-                        <rect key="frame" x="15" y="15" width="349" height="520"/>
+                        <rect key="frame" x="15" y="15" width="685" height="520"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="morbius.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="chB-Cx-Z6G">
                                 <rect key="frame" x="0.0" y="135" width="150" height="250"/>
@@ -29,41 +29,30 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3mF-gv-Uht">
-                                <rect key="frame" x="165" y="196.5" width="129" height="127"/>
+                                <rect key="frame" x="165" y="217" width="465" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morbius" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-PD-See">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="23"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="465" height="23"/>
                                         <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="23"/>
                                         <color key="textColor" systemColor="systemGray6Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-04-06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6C-W6-rP5">
-                                        <rect key="frame" x="0.0" y="33" width="129" height="22.5"/>
+                                        <rect key="frame" x="0.0" y="33" width="465" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="19"/>
                                         <color key="textColor" systemColor="systemGray5Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7113" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgV-Wa-Y7o">
-                                        <rect key="frame" x="0.0" y="65.5" width="129" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="65.5" width="465" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-J0-Co9">
-                                        <rect key="frame" x="0.0" y="96" width="129" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="PyI-vw-ne5"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Add to Favorites"/>
-                                        <connections>
-                                            <action selector="addFavoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YSe-ev-Bi0"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tby-ca-hIo">
-                                <rect key="frame" x="309" y="244.5" width="40" height="31"/>
+                                <rect key="frame" x="645" y="244.5" width="40" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="rri-fe-9dr"/>
                                 </constraints>
@@ -72,6 +61,9 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
                                     <color key="baseForegroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addToFavoritePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="I78-KD-0ol"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>
@@ -87,7 +79,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addFavoriteIcon" destination="tby-ca-hIo" id="L8h-Yb-5Ct"/>
-                <outlet property="addFavoritesButton" destination="gSL-J0-Co9" id="UEQ-Pi-OIK"/>
                 <outlet property="movieImageView" destination="chB-Cx-Z6G" id="OQW-sn-ih3"/>
                 <outlet property="movieNameLabel" destination="pBY-PD-See" id="XQd-NC-5KU"/>
                 <outlet property="movieRatingLabel" destination="WgV-Wa-Y7o" id="Vgq-oT-3Bl"/>

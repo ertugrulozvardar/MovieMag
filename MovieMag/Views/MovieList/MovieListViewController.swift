@@ -28,6 +28,7 @@ class MovieListViewController: UIViewController {
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
     private let userDefaults = UserDefaults.standard
+    private var favoriteMovies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +115,12 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 
         let movie: Movie
         movie = movies[indexPath.row]
+        if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
+            favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
+            if favoriteMovies.contains(movie) {
+                cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            }
+        }
         cell.configure(movie: movie)
         return cell
     }
