@@ -18,17 +18,19 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             configureTableView()
+            tableView.refreshControl = UIRefreshControl()
+            tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         }
     }
     
     lazy var searchVC = UISearchController(searchResultsController: nil)
-    
     private var movies: [Movie] = []
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
     private let userDefaults = UserDefaults.standard
     private var favoriteMovies = [Movie]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,10 @@ class MovieListViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.animate()
         }
+    }
+    
+    @objc private func didPullToRefresh() {
+        fetchMovies()
     }
     
     private func animate() {
@@ -70,12 +76,17 @@ class MovieListViewController: UIViewController {
     }
         
     func fetchMovies() {
+        if tableView.refreshControl?.isRefreshing == true {
+            movies.removeAll()
+            currentPage = 1
+        }
         isFetchingMovies = true
         movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
                 DispatchQueue.main.async {
+                    self?.tableView.refreshControl?.endRefreshing()
                     self?.tableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
@@ -154,4 +165,5 @@ extension MovieListViewController: UISearchBarDelegate {
         searchMovies(searchQuery: text)
     }
 }
+
 
