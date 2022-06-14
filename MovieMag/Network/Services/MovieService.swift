@@ -20,6 +20,7 @@ struct MovieService: MovieServiceProtocol {
     
     private let network = Network()
     private let apiKey = "2a688e11aac3f4d3278cc7ed05a281ec"
+    private let languageCode = Locale.current.languageCode
     
     func fetchAllMovies(atPage page: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&page=\(page)")!)
@@ -37,8 +38,14 @@ struct MovieService: MovieServiceProtocol {
     }
     
     func fetchMovie(id: Int, completion: @escaping (Result<MovieDetail, NetworkError>) -> Void) {
+        switch languageCode {
+        case "tr":
+            let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)&language=tr")!)
+            network.performRequest(request: urlRequest, completion: completion)
+        default:
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
+        }
     }
     
     func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void) {
@@ -52,7 +59,13 @@ struct MovieService: MovieServiceProtocol {
     }
     
     func fetchSingleCast(castId: Int, completion: @escaping (Result<CastDetail, NetworkError>) -> Void) {
+        switch languageCode {
+        case "tr":
+            let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/person/\(castId)?api_key=\(apiKey)&language=tr")!)
+            network.performRequest(request: urlRequest, completion: completion)
+        default:
             let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/person/\(castId)?api_key=\(apiKey)")!)
             network.performRequest(request: urlRequest, completion: completion)
+        }
     }
 }
