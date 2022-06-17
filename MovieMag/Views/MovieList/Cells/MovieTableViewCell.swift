@@ -10,20 +10,15 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var movieImageView: UIImageView! {
-        didSet {
-            movieImageView.layer.cornerRadius = 25
-        }
-    }
+    @IBOutlet weak var movieImageView: UIImageView!
     
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var addFavoriteIcon: UIButton!
     
-    private var favoriteMovies = [Movie]()
     var movie: Movie?
-    let userDefaults = UserDefaults.standard
+    private var dataManager = DataManager()
     
     func configure(movie: Movie) {
         self.movie = movie
@@ -33,30 +28,16 @@ class MovieTableViewCell: UITableViewCell {
         movieRatingLabel.text = movie.ratingText    
     }
     
-    func saveToFavorites() {
-            if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
-                favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
-                if !favoriteMovies.contains(movie!) {
-                    favoriteMovies.append(movie!)
-                }
-                if let setFavMovies = try? PropertyListEncoder().encode(favoriteMovies) {
-                    userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
-                }
-            } else {
-                let newFavoriteMovies = [movie!]
-                if let setFavMovies = try? PropertyListEncoder().encode(newFavoriteMovies) {
-                    userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
-                }
-            }
-    }
-    
     @IBAction func addToFavoritePressed(_ sender: UIButton) {
-        if addFavoriteIcon.currentImage == UIImage(systemName: "star") {
+        
+        switch addFavoriteIcon.currentImage {
+        case UIImage(systemName: "star"):
             addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            saveToFavorites()
-        } else {
+            if let currentMovie = movie {
+                dataManager.saveToFavorites(movie: currentMovie)
+            }
+        default:
             addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
-    
 }
