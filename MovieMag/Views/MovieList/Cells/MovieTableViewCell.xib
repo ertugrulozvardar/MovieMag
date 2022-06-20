@@ -68,7 +68,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" red="0.34241169690000001" green="0.15707257390000001" blue="0.34815341230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VN5-QV-Dqu" secondAttribute="trailing" constant="15" id="Hmp-iu-120"/>
                     <constraint firstAttribute="bottom" secondItem="VN5-QV-Dqu" secondAttribute="bottom" constant="15" id="R8Z-kB-5Qk"/>
@@ -98,6 +98,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

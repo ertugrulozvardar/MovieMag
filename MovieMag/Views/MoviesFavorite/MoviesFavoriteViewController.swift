@@ -9,14 +9,15 @@ import UIKit
 
 class MoviesFavoriteViewController: UIViewController {
 
+    private var favoriteMovies = [Movie]()
+    let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var favoritesTableView: UITableView! {
         didSet {
             configureTableView()
         }
     }
-    
-    private var favoriteMovies = [Movie]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -54,13 +55,19 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
   
         let movie = favoriteMovies[indexPath.row]
         cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
+            favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
+            if !favoriteMovies.contains(movie) {
+                cell.addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
         cell.configure(movie: movie)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let userDefaults = UserDefaults.standard
+            
         
             if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
                 favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)

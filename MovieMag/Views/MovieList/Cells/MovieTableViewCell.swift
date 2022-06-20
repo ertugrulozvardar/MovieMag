@@ -11,7 +11,6 @@ import Kingfisher
 class MovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
-    
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
@@ -29,7 +28,6 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     @IBAction func addToFavoritePressed(_ sender: UIButton) {
-        
         switch addFavoriteIcon.currentImage {
         case UIImage(systemName: "star"):
             addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
