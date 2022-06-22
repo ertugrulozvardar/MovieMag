@@ -25,7 +25,6 @@ class MoviesFavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getFavorites()
-        self.favoritesTableView.reloadData()
     }
     
     func configureTableView() {
@@ -67,8 +66,6 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-        
             if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
                 favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
                 favoriteMovies.remove(at: indexPath.row)

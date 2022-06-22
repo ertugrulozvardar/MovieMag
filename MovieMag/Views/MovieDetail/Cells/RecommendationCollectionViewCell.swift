@@ -11,15 +11,8 @@ import Kingfisher
 class RecommendationCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var recommendedMovieImageView: UIImageView!
-    
-    var recommendedMovie: Movie?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+
     func configure(recommendedMovie: Movie) {
-        self.recommendedMovie = recommendedMovie
         recommendedMovieImageView.kf.setImage(with: recommendedMovie.posterURL)
     }
 

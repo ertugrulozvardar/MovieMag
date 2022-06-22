@@ -9,7 +9,9 @@ import Foundation
 
 struct Network {
     
-    private let urlSession = URLSession.shared //Singleton usage
+    private let urlSession = URLSession.shared
+    private let baseUrl = "https://api.themoviedb.org/"
+    private let baseParameter = 3
     
     func performRequest<T: Codable>(request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
         let task = urlSession.dataTask(with: request) { data, response, error in
@@ -29,6 +31,10 @@ struct Network {
             }
         }
         task.resume()
+    }
+    
+    func setBaseUrl () -> String {
+        return baseUrl + String(baseParameter)
     }
 }
 

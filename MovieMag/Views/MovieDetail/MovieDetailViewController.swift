@@ -11,7 +11,7 @@ import SafariServices
 
 class MovieDetailViewController: UIViewController {
 
-    @IBOutlet weak var recommendationsView: UICollectionView!
+    @IBOutlet weak var recommendationsView: UICollectionView! //recommendationsCollectionvİEW
     
     @IBOutlet weak var castView: UICollectionView!
     
@@ -31,16 +31,18 @@ class MovieDetailViewController: UIViewController {
     
     var movieId: Int?
     private let movieService: MovieServiceProtocol = MovieService()
+    private let castService: CastServiceProtocol = CastService()
+    private let recommendationService: RecommendationServiceProtocol = RecommendationService()
     private var movieDetail: MovieDetail?
     private var recommendedMovies: [Movie] = []
     private var castMembers: [Cast] = []
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCollectionCells()
         getMovieDetail()
         getRecommendations()
         getCastMembers()
-        registerCollectionCells()
     }
     
     func registerCollectionCells() {
@@ -71,7 +73,7 @@ class MovieDetailViewController: UIViewController {
     
     func getRecommendations() {
         if let id = movieId {
-            movieService.fetchRecommendations(id: id) { result in
+            recommendationService.fetchRecommendations(id: id) { result in
                 switch result {
                 case .success(let response):
                     self.recommendedMovies = response.results ?? []
@@ -92,7 +94,7 @@ class MovieDetailViewController: UIViewController {
     
     func getCastMembers() {
         if let id = movieId {
-            movieService.fetchCasts(id: id) { result in
+            castService.fetchCasts(id: id) { result in
                 switch result {
                 case .success(let response):
                     self.castMembers = response.cast ?? []
@@ -146,7 +148,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
         case castView:
             return castMembers.count
         default:
-            return 1
+            return 0
         }
     }
 
@@ -165,13 +167,10 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             castCell.configure(cast: cast)
             return castCell
         default:
-            let castCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCollectionViewCell" , for: indexPath) as! CastCollectionViewCell
-            let cast: Cast
-            cast = castMembers[indexPath.row]
-            castCell.configure(cast: cast)
-            return castCell
+            return UICollectionViewCell()
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == castView {
             if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
@@ -187,12 +186,4 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             }
         }
     }
-    
-    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let bounds = collectionView.bounds
-        return CGSize(width: bounds.width / 2 - 20, height: bounds.height / 4)
-    }*/
 }
-
-
-    

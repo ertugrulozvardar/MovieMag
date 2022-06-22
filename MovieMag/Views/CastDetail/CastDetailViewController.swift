@@ -20,6 +20,7 @@ class CastDetailViewController: UIViewController {
     var castId: Int?
     private var castDetail: CastDetail?
     private let movieService: MovieServiceProtocol = MovieService()
+    private let castService: CastServiceProtocol = CastService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class CastDetailViewController: UIViewController {
     
     func getCastDetail() {
         if let castId = castId {
-            movieService.fetchSingleCast(castId: castId) { result in
+            castService.fetchSingleCast(castId: castId) { result in
                 switch result {
                 case .success(let response):
                     self.castDetail = response

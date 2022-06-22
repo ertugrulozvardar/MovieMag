@@ -10,6 +10,8 @@
 		4F490FC2285C6B89003C3334 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F490FC1285C6B89003C3334 /* DataManager.swift */; };
 		4F4E860C284F854500514A9E /* RecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4E860A284F854500514A9E /* RecommendationCollectionViewCell.swift */; };
 		4F4E860D284F854500514A9E /* RecommendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4E860B284F854500514A9E /* RecommendationCollectionViewCell.xib */; };
+		4F522D082863B5E200462749 /* CastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522D072863B5E200462749 /* CastService.swift */; };
+		4F522D112863C07E00462749 /* RecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522D102863C07E00462749 /* RecommendationService.swift */; };
 		4FB9AA2A28509DF800ACF931 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9AA2828509DF800ACF931 /* CastCollectionViewCell.swift */; };
 		4FB9AA2B28509DF800ACF931 /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB9AA2928509DF800ACF931 /* CastCollectionViewCell.xib */; };
 		4FB9AA2D2850A7E100ACF931 /* CastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9AA2C2850A7E100ACF931 /* CastDetail.swift */; };
@@ -41,6 +43,8 @@
 		4F490FC1285C6B89003C3334 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4F4E860A284F854500514A9E /* RecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F4E860B284F854500514A9E /* RecommendationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendationCollectionViewCell.xib; sourceTree = "<group>"; };
+		4F522D072863B5E200462749 /* CastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastService.swift; sourceTree = "<group>"; };
+		4F522D102863C07E00462749 /* RecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationService.swift; sourceTree = "<group>"; };
 		4FAB388528586E4D00834498 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		4FAB388628586E4D00834498 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4FB9AA2828509DF800ACF931 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				6F265CD32846B5230032026D /* MovieService.swift */,
+				4F522D072863B5E200462749 /* CastService.swift */,
+				4F522D102863C07E00462749 /* RecommendationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				4F490FC2285C6B89003C3334 /* DataManager.swift in Sources */,
 				4FB9AA2D2850A7E100ACF931 /* CastDetail.swift in Sources */,
 				6F265CC52846B4430032026D /* MovieListViewController.swift in Sources */,
+				4F522D112863C07E00462749 /* RecommendationService.swift in Sources */,
 				6F94A23D284927E6004C6BD0 /* Cast.swift in Sources */,
 				6F265CC82846B4660032026D /* MovieTableViewCell.swift in Sources */,
 				4FB9AA2A28509DF800ACF931 /* CastCollectionViewCell.swift in Sources */,
@@ -316,6 +323,7 @@
 				6F94A239284924FB004C6BD0 /* MovieGenre.swift in Sources */,
 				6F265CD42846B5230032026D /* MovieService.swift in Sources */,
 				6FA53BFD284692020006396A /* AppDelegate.swift in Sources */,
+				4F522D082863B5E200462749 /* CastService.swift in Sources */,
 				6F94A23B284925F7004C6BD0 /* ProductionCompany.swift in Sources */,
 				4F4E860C284F854500514A9E /* RecommendationCollectionViewCell.swift in Sources */,
 				6F265CCC2846B49C0032026D /* MovieDetailViewController.swift in Sources */,

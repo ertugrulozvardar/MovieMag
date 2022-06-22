@@ -31,7 +31,6 @@ class MovieListViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     private var favoriteMovies = [Movie]()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(imageView)
@@ -85,7 +84,7 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
-                DispatchQueue.main.async {
+                DispatchQueue.main.async {  //gereksiz
                     self?.tableView.refreshControl?.endRefreshing()
                     self?.tableView.reloadData()
                     self?.currentPage += 1
@@ -124,12 +123,13 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
 
-        let movie: Movie
-        movie = movies[indexPath.row]
+        let movie: Movie = movies[indexPath.row]
         if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
             favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
             if favoriteMovies.contains(movie) {
                 cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else  {
+                cell.addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
             }
         }
         cell.configure(movie: movie)
