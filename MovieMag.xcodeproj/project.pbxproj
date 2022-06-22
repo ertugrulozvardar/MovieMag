@@ -83,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F278CE528631B2D0066FF60 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4F4E860A284F854500514A9E /* RecommendationCollectionViewCell.swift */,
+				4F4E860B284F854500514A9E /* RecommendationCollectionViewCell.xib */,
+				4FB9AA2828509DF800ACF931 /* CastCollectionViewCell.swift */,
+				4FB9AA2928509DF800ACF931 /* CastCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4F490FC0285C6B7C003C3334 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +160,6 @@
 			children = (
 				6F265CC62846B4660032026D /* MovieTableViewCell.swift */,
 				6F265CC72846B4660032026D /* MovieTableViewCell.xib */,
-				4F4E860A284F854500514A9E /* RecommendationCollectionViewCell.swift */,
-				4F4E860B284F854500514A9E /* RecommendationCollectionViewCell.xib */,
-				4FB9AA2828509DF800ACF931 /* CastCollectionViewCell.swift */,
-				4FB9AA2928509DF800ACF931 /* CastCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 		6F265CCA2846B4750032026D /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				4F278CE528631B2D0066FF60 /* Cells */,
 				6F265CCB2846B49C0032026D /* MovieDetailViewController.swift */,
 			);
 			path = MovieDetail;

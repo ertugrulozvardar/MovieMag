@@ -73,10 +73,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTS-EG-BFF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1238"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1188"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O6j-EO-1YS">
-                                                <rect key="frame" x="15" y="429" width="384" height="794"/>
+                                                <rect key="frame" x="15" y="429" width="384" height="744"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dmD-jx-IKb">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="23"/>
@@ -230,7 +230,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3g2-z4-IVv">
-                                                        <rect key="frame" x="0.0" y="418" width="384" height="376"/>
+                                                        <rect key="frame" x="0.0" y="418" width="384" height="326"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFw-eh-OSM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="23"/>
@@ -272,10 +272,10 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYX-o9-axj">
-                                                                <rect key="frame" x="0.0" y="226" width="384" height="150"/>
+                                                                <rect key="frame" x="0.0" y="226" width="384" height="100"/>
                                                                 <subviews>
                                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-qo-4Vb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1G3-kr-h1e">
@@ -294,7 +294,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="150" id="7RN-qX-ogk"/>
+                                                                    <constraint firstAttribute="height" constant="100" id="7RN-qX-ogk"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>

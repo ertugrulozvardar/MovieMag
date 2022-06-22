@@ -6,7 +6,7 @@
 "5sV-2c-eRo.text" = "Biyografi";
 
 /* Class = "UILabel"; text = " Born:"; ObjectID = "8ZO-Yr-ZiV"; */
-"8ZO-Yr-ZiV.text" = " Doğum yılı:";
+"8ZO-Yr-ZiV.text" = "Doğum yılı:";
 
 /* Class = "UILabel"; text = "Birthplace:"; ObjectID = "Dc0-fj-xii"; */
 "Dc0-fj-xii.text" = "Doğum yeri:";
