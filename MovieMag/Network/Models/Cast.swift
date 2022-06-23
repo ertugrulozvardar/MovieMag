@@ -11,17 +11,32 @@ struct Cast: Codable {
     let adult: Bool?
     let gender: Int?
     let id: Int?
-    let known_for_department: String?
+    let knownForDepartment: String?
     let name: String?
-    let original_name: String?
+    let originalName: String?
     let popularity: Float?
-    let profile_path: String?
-    let cast_id: Int?
+    let profilePath: String?
+    let castId: Int?
     let character: String?
-    let credit_id: String?
+    let creditId: String?
     let order: Int?
 
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case gender
+        case id
+        case knownForDepartment = "known_for_department"
+        case name
+        case originalName = "original_name"
+        case popularity
+        case profilePath = "profile_path"
+        case castId = "cast_id"
+        case character
+        case creditId = "credit_id"
+        case order
+    }
+    
     var profileURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(profile_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
     }
 }

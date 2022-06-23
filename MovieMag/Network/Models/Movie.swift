@@ -10,19 +10,36 @@ import Foundation
 struct Movie: Codable {
 
     let adult: Bool?
-    let backdrop_path: String?
-    let genre_ids: [Int]?
+    let backdropPath: String?
+    let genreIds: [Int]?
     let id: Int?
-    let original_language: String?
-    let original_title: String?
+    let originalLanguage: String?
+    let originalTitle: String?
     let overview: String
     let popularity: Double?
-    let poster_path: String?
-    let release_date: String?
+    let posterPath: String?
+    let releaseDate: String?
     let title: String
     let video: Bool?
-    let vote_average: Double?
-    let vote_count: Int?
+    let voteAverage: Double?
+    let voteCount: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case backdropPath = "backdrop_path"
+        case genreIds = "genre_ids"
+        case id
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview
+        case popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+    }
     
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -38,16 +55,16 @@ struct Movie: Codable {
     }()
     
     var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdrop_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
     }
     
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(poster_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
     
     
     var ratingText: String {
-        let rating = Int(vote_average ?? 0)
+        let rating = Int(voteAverage ?? 0)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
             return acc + "★"
         }

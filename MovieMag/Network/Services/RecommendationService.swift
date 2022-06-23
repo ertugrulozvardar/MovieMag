@@ -13,11 +13,12 @@ protocol RecommendationServiceProtocol {
 
 struct RecommendationService: RecommendationServiceProtocol {
     private let network = Network()
-    private let apiKey = "2a688e11aac3f4d3278cc7ed05a281ec"
-    private let languageCode = Locale.current.languageCode
+    private let serviceParameterManager = ServiceParameterManager()
     
     func fetchRecommendations(id: Int, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
-        let urlRequest = URLRequest(url: URL(string: "\(network.setBaseUrl())/movie/\(id)/recommendations?api_key=\(apiKey)")!)
-        network.performRequest(request: urlRequest, completion: completion)
+        if let newApiKey = serviceParameterManager.getApiKey() {
+            let urlRequest = URLRequest(url: URL(string: "\(serviceParameterManager.setBaseUrl())/movie/\(id)/recommendations?api_key=\(newApiKey)")!)
+            network.performRequest(request: urlRequest, completion: completion)
+        }
     }
 }

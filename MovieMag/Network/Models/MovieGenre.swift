@@ -15,7 +15,6 @@ struct MovieGenre: Codable {
 extension Collection where Iterator.Element == MovieGenre {
     func getGenresText() -> String {
         guard !self.isEmpty else { return "-"}
-        
         let names = self.compactMap { MovieGenre in
             MovieGenre.name
         }

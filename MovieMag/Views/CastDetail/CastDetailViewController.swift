@@ -53,7 +53,7 @@ class CastDetailViewController: UIViewController {
         actorImageView.kf.setImage(with: castDetail.profileURL)
         actorNameLabel.text = castDetail.name
         actorBirthdayLabel.text = castDetail.birthday
-        actorBirthPlaceLabel.text = castDetail.place_of_birth
+        actorBirthPlaceLabel.text = castDetail.placeOfBirth
         if let deathDayInfo = castDetail.deathday {
             actorDeathDayLabel.text = deathDayInfo
         } else {

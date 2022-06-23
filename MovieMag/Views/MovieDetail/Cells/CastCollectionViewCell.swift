@@ -17,6 +17,6 @@ class CastCollectionViewCell: UICollectionViewCell {
     func configure(cast: Cast) {
         castImageView.kf.setImage(with: cast.profileURL)
         characterNameLabel.text = cast.character
-        actorNameLabel.text = cast.original_name
+        actorNameLabel.text = cast.originalName
     }
 }

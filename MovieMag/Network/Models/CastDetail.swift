@@ -9,21 +9,36 @@ import Foundation
 
 struct CastDetail: Codable{
     
-    let also_known_as: [String]?
+    let alsoKnownAs: [String]?
     let biography: String?
     let birthday: String?
     let deathday: String?
     let gender: Int?
     let homepage: String?
     let id: Int?
-    let imdb_id: String?
-    let known_for_department: String?
+    let imdbId: String?
+    let knownForDepartment: String?
     let name: String?
-    let place_of_birth: String?
+    let placeOfBirth: String?
     let popularity: Double?
-    let profile_path: String?
+    let profilePath: String?
     
+    enum CodingKeys: String, CodingKey {
+        case alsoKnownAs = "also_known_as"
+        case biography
+        case birthday
+        case deathday
+        case gender
+        case homepage
+        case id
+        case imdbId = "imdb_id"
+        case knownForDepartment = "known_for_department"
+        case name
+        case placeOfBirth = "place_of_birth"
+        case popularity
+        case profilePath = "profile_path"
+    }
     var profileURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(profile_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
     }
 }

@@ -126,15 +126,15 @@ class MovieDetailViewController: UIViewController {
     func updateUIElements(movieDetail: MovieDetail) {
         movieImageView.kf.setImage(with: movieDetail.posterURL)
         movieNameLabel.text = movieDetail.title
-        releaseDateLabel.text = movieDetail.release_date
+        releaseDateLabel.text = movieDetail.releaseDate
         durationLabel.text = movieDetail.durationText
-        originalTitleLabel.text = movieDetail.original_title
-        originalLanguageLabel.text = movieDetail.original_language
+        originalTitleLabel.text = movieDetail.originalTitle
+        originalLanguageLabel.text = movieDetail.originalLanguage
         ratingLabel.text = movieDetail.ratingText
         genresLabel.text = movieDetail.genres?.getGenresText()
         budgetLabel.text = movieDetail.budgetText
         revenueLabel.text = movieDetail.revenueText
-        productionCompaniesLabel.text = movieDetail.production_companies?.first?.name
+        productionCompaniesLabel.text = movieDetail.productionCompanies?.first?.name
         overviewLabel.text = movieDetail.overview
     }
 }

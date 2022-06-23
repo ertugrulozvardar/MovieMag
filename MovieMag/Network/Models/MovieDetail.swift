@@ -10,24 +10,46 @@ import Foundation
 struct MovieDetail: Codable {
 
     let adult: Bool?
-    let backdrop_path: String?
+    let backdropPath: String?
     let budget: Int?
     let genres: [MovieGenre]?
     let homepage: String?
     let id: Int?
-    let original_language: String?
-    let original_title: String?
+    let originalLanguage: String?
+    let originalTitle: String?
     let overview: String?
     let popularity: Double?
-    let poster_path: String?
-    let production_companies: [ProductionCompany]?
-    let release_date: String?
+    let posterPath: String?
+    let productionCompanies: [ProductionCompany]?
+    let releaseDate: String?
     let revenue: Int?
     let runtime: Int?
     let title: String
     let video: Bool?
-    let vote_average: Double?
-    let vote_count: Int?
+    let voteAverage: Double?
+    let voteCount: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case backdropPath = "backdrop_path"
+        case budget
+        case genres
+        case homepage
+        case id
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview
+        case popularity
+        case posterPath = "poster_path"
+        case productionCompanies = "production_companies"
+        case releaseDate = "release_date"
+        case revenue
+        case runtime
+        case title
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+    }
     
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -43,15 +65,15 @@ struct MovieDetail: Codable {
     }()
     
     var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdrop_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
     }
     
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(poster_path ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
     
     var ratingText: String {
-        let rating = Int(vote_average ?? 0)
+        let rating = Int(voteAverage ?? 0)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
             return acc + "★"
         }
