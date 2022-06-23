@@ -36,7 +36,9 @@ struct Cast: Codable {
         case order
     }
     
+    private let modelFormatter = ModelFormatter()
+    
     var profileURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
+        return modelFormatter.getProfileUrl(by: profilePath)
     }
 }

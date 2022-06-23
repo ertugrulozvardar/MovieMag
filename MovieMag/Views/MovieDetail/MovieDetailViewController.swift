@@ -126,7 +126,7 @@ class MovieDetailViewController: UIViewController {
     func updateUIElements(movieDetail: MovieDetail) {
         movieImageView.kf.setImage(with: movieDetail.posterURL)
         movieNameLabel.text = movieDetail.title
-        releaseDateLabel.text = movieDetail.releaseDate
+        releaseDateLabel.text = movieDetail.yearText
         durationLabel.text = movieDetail.durationText
         originalTitleLabel.text = movieDetail.originalTitle
         originalLanguageLabel.text = movieDetail.originalLanguage

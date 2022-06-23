@@ -41,41 +41,30 @@ struct Movie: Codable {
         case voteCount = "vote_count"
     }
     
-    static private let yearFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy"
-        return formatter
-    }()
-    
-    static private let durationFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .full
-        formatter.allowedUnits = [.hour, .minute]
-        return formatter
-    }()
+    private let modelFormatter = ModelFormatter()
     
     var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
+        return modelFormatter.getBackdropUrl(by: backdropPath)
     }
     
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+        return modelFormatter.getPosterUrl(by: posterPath)
     }
     
-    
     var ratingText: String {
-        let rating = Int(voteAverage ?? 0)
-        let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
-            return acc + "★"
-        }
-        return ratingText
+        return modelFormatter.formatRating(with: voteAverage ?? 0)
     }
     
     var scoreText: String {
-        guard ratingText.count > 0 else {
+        return modelFormatter.formatScore(with: ratingText)
+    }
+    
+    var yearText: String {
+        let dateFormatter = modelFormatter.formatDate()
+        guard let releaseDate = self.releaseDate, let date = dateFormatter.date(from: releaseDate) else {
             return "n/a"
         }
-        return "\(ratingText.count)/10"
+        return modelFormatter.formatDateByYear(with: date)
     }
 }
 

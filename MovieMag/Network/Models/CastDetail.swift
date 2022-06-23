@@ -38,7 +38,10 @@ struct CastDetail: Codable{
         case popularity
         case profilePath = "profile_path"
     }
+    
+    private let modelFormatter = ModelFormatter()
+    
     var profileURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
+        return modelFormatter.getProfileUrl(by: profilePath)
     }
 }

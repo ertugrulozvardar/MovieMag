@@ -23,7 +23,7 @@ class MovieTableViewCell: UITableViewCell {
         self.movie = movie
         movieImageView.kf.setImage(with: movie.posterURL)
         movieNameLabel.text = movie.title
-        releaseDateLabel.text = movie.releaseDate
+        releaseDateLabel.text = movie.yearText
         movieRatingLabel.text = movie.ratingText    
     }
     
