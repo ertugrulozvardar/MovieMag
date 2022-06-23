@@ -14,7 +14,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var recommendationsView: UICollectionView! //recommendationsCollectionvİEW
     
     @IBOutlet weak var castView: UICollectionView!
-    
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!

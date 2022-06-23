@@ -41,9 +41,10 @@ class MovieListViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageView.center = view.center
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.animate()
         }
+        destroyAnimationImageView()
     }
     
     @objc private func didPullToRefresh() {
@@ -51,13 +52,23 @@ class MovieListViewController: UIViewController {
     }
     
     private func animate() {
-        UIView.animate(withDuration: 3, animations: {
+        self.imageView.isHidden = false
+        UIView.animate(withDuration: 5, animations: {
             let size = self.view.frame.size.width * 3
             let xDifference = size - self.view.frame.size.width
             let yDifference = self.view.frame.size.height - size
             self.imageView.frame = CGRect(x: -(xDifference/2), y: yDifference/2, width: size, height: size)
-            self.imageView.alpha = 0
         })
+    }
+    
+    private func destroyAnimationImageView() {
+        self.imageView.isHidden = false
+        UIView.animate(withDuration: 2, delay: 5, options: UIView.AnimationOptions.transitionFlipFromTop) {
+            self.imageView.alpha = 0
+        } completion: { finished in
+            self.imageView.isHidden = true
+        }
+
     }
     
     func configureTableView() {
@@ -84,12 +95,10 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
-                DispatchQueue.main.async {  //gereksiz
                     self?.tableView.refreshControl?.endRefreshing()
                     self?.tableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
-                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -102,11 +111,9 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies = response.results ?? []
-                DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
-                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
