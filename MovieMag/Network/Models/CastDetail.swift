@@ -39,9 +39,9 @@ struct CastDetail: Codable{
         case profilePath = "profile_path"
     }
     
-    private let modelFormatter = ModelFormatter()
+    private let modelURLFormatter = ModelURLFormatter()
     
     var profileURL: URL {
-        return modelFormatter.getProfileUrl(by: profilePath)
+        return modelURLFormatter.getProfileUrl(by: profilePath)
     }
 }

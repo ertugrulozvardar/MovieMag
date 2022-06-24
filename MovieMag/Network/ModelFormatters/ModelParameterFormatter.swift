@@ -7,14 +7,7 @@
 
 import Foundation
 
-struct ModelFormatter {
-    
-    private let baseUrl = "https://image.tmdb.org/"
-    private let baseParameter = "t/p/w500"
-    
-    func setBaseUrl () -> String {
-        return baseUrl + String(baseParameter)
-    }
+struct ModelParameterFormatter {
     
     func formatDate() -> DateFormatter {
         let dateFormatter = DateFormatter()
@@ -49,17 +42,4 @@ struct ModelFormatter {
         }
         return "\(ratingScore.count)/10"
     }
-    
-    func getBackdropUrl(by backdropPath: String?) -> URL {
-        return URL(string: "\(setBaseUrl())\(backdropPath ?? "")")!
-    }
-    
-    func getPosterUrl(by posterPath: String?) -> URL {
-        return URL(string: "\(setBaseUrl())\(posterPath ?? "")")!
-    }
-    
-    func getProfileUrl(by profilePath: String?) -> URL {
-        return URL(string: "\(setBaseUrl())\(profilePath ?? "")")!
-    }
-    
 }

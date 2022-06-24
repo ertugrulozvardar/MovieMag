@@ -51,45 +51,47 @@ struct MovieDetail: Codable {
         case voteCount = "vote_count"
     }
     
-    private let modelFormatter = ModelFormatter()
+    private let modelParameterFormatter = ModelParameterFormatter()
+    private let modelURLFormatter = ModelURLFormatter()
+    private let modelNumberFormatter = ModelNumberFormatter()
     
     var backdropURL: URL {
-        return modelFormatter.getBackdropUrl(by: backdropPath)
+        return modelURLFormatter.getBackdropUrl(by: backdropPath)
     }
     
     var posterURL: URL {
-        return modelFormatter.getPosterUrl(by: posterPath)
+        return modelURLFormatter.getPosterUrl(by: posterPath)
     }
     
     var ratingText: String {
-        return modelFormatter.formatRating(with: voteAverage ?? 0)
+        return modelParameterFormatter.formatRating(with: voteAverage ?? 0)
     }
     
     var budgetText: String {
-        return "\(budget ?? 0)"
+        return modelNumberFormatter.formatCurrency(with: budget)
     }
     
     var revenueText: String {
-        return "\(revenue ?? 0)"
+        return modelNumberFormatter.formatCurrency(with: revenue)
     }
     
     var scoreText: String {
-        return modelFormatter.formatScore(with: ratingText)
+        return modelParameterFormatter.formatScore(with: ratingText)
     }
     
     var durationText: String {
         guard let runtime = self.runtime, runtime > 0 else {
             return "n/a"
         }
-        return modelFormatter.formatDuration(with: runtime)
+        return modelParameterFormatter.formatDuration(with: runtime)
     }
     
     var yearText: String {
-        let dateFormatter = modelFormatter.formatDate()
+        let dateFormatter = modelParameterFormatter.formatDate()
         guard let releaseDate = self.releaseDate, let date = dateFormatter.date(from: releaseDate) else {
             return "n/a"
         }
-        return modelFormatter.formatDateByYear(with: date)
+        return modelParameterFormatter.formatDateByYear(with: date)
     }
     
 }
