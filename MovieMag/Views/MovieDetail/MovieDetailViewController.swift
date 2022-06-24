@@ -11,9 +11,9 @@ import SafariServices
 
 class MovieDetailViewController: UIViewController {
 
-    @IBOutlet weak var recommendationsView: UICollectionView! //recommendationsCollectionvİEW
+    @IBOutlet weak var recommendationsCollectionView: UICollectionView! //recommendationsCollectionvİEW
     
-    @IBOutlet weak var castView: UICollectionView!
+    @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -45,8 +45,8 @@ class MovieDetailViewController: UIViewController {
     }
     
     func registerCollectionCells() {
-        recommendationsView.register(UINib(nibName: "RecommendationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendationCollectionViewCell")
-        castView.register(UINib(nibName: "CastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CastCollectionViewCell")
+        recommendationsCollectionView.register(UINib(nibName: "RecommendationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendationCollectionViewCell")
+        castCollectionView.register(UINib(nibName: "CastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CastCollectionViewCell")
     }
     
     func getMovieDetail() {
@@ -76,7 +76,7 @@ class MovieDetailViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     self.recommendedMovies = response.results ?? []
-                    self.recommendationsView.reloadData()
+                    self.recommendationsCollectionView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
@@ -97,7 +97,7 @@ class MovieDetailViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     self.castMembers = response.cast ?? []
-                    self.castView.reloadData()
+                    self.castCollectionView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
@@ -142,9 +142,9 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-        case recommendationsView:
+        case recommendationsCollectionView:
             return recommendedMovies.count
-        case castView:
+        case castCollectionView:
             return castMembers.count
         default:
             return 0
@@ -153,13 +153,13 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case recommendationsView:
+        case recommendationsCollectionView:
             let recommendationsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCollectionViewCell" , for: indexPath) as! RecommendationCollectionViewCell
             let recommendedMovie: Movie
             recommendedMovie = recommendedMovies[indexPath.row]
             recommendationsCell.configure(recommendedMovie: recommendedMovie)
             return recommendationsCell
-        case castView:
+        case castCollectionView:
             let castCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCollectionViewCell" , for: indexPath) as! CastCollectionViewCell
             let cast: Cast
             cast = castMembers[indexPath.row]
@@ -171,7 +171,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == castView {
+        if collectionView == castCollectionView {
             if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
 
                 castDetailsVC.castId = castMembers[indexPath.row].id
