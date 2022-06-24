@@ -21,6 +21,12 @@ struct ModelParameterFormatter {
         return dateFormatter.string(from: date)
     }
     
+    func formatDateToFull(with date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter.string(from: date)
+    }
+    
     func formatDuration(with runtime: Int) -> String {
         let durationFormatter = DateComponentsFormatter()
         durationFormatter.unitsStyle = .full

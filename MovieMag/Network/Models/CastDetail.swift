@@ -40,8 +40,25 @@ struct CastDetail: Codable{
     }
     
     private let modelURLFormatter = ModelURLFormatter()
+    private let modelParameterFormatter = ModelParameterFormatter()
     
     var profileURL: URL {
         return modelURLFormatter.getProfileUrl(by: profilePath)
+    }
+    
+    var birthdayText: String {
+        let dateFormatter = modelParameterFormatter.formatDate()
+        guard let birthday = self.birthday, let date = dateFormatter.date(from: birthday) else {
+            return "Unknown"
+        }
+        return modelParameterFormatter.formatDateToFull(with: date)
+    }
+    
+    var deathdayText: String? {
+        let dateFormatter = modelParameterFormatter.formatDate()
+        guard let deathday = self.deathday, let date = dateFormatter.date(from: deathday) else {
+            return "Alive"
+        }
+        return modelParameterFormatter.formatDateToFull(with: date)
     }
 }

@@ -52,9 +52,9 @@ class CastDetailViewController: UIViewController {
     func updateUIElements(castDetail: CastDetail) {
         actorImageView.kf.setImage(with: castDetail.profileURL)
         actorNameLabel.text = castDetail.name
-        actorBirthdayLabel.text = castDetail.birthday
+        actorBirthdayLabel.text = castDetail.birthdayText
         actorBirthPlaceLabel.text = castDetail.placeOfBirth
-        if let deathDayInfo = castDetail.deathday {
+        if let deathDayInfo = castDetail.deathdayText {
             actorDeathDayLabel.text = deathDayInfo
         } else {
             if currentLanguage == "en" {
