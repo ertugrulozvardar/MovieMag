@@ -10,6 +10,7 @@ import Foundation
 protocol Requestable {
     
     var baseURL: String { get }
+    var baseNumberParameter: Int { get }
     var URLpath: String { get }
     var apiKey: String { get }
     var languageCode: String { get }
@@ -20,6 +21,10 @@ extension Requestable {
     
     var baseURL: String {
         return "https://api.themoviedb.org"
+    }
+    
+    var baseNumberParameter: Int {
+        return 3
     }
     
     var apiKey: String {

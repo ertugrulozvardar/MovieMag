@@ -20,21 +20,21 @@ extension MovieRequest: Requestable {
         var urlComponents = URLComponents(string: baseURL)!
         switch self {
         case .fetchMovie(let id):
-            urlComponents.path = "/3/movie/\(id)"
+            urlComponents.path = "/\(baseNumberParameter)/movie/\(id)"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "language", value: languageCode)
             ]
             return urlComponents.string!
         case .fetchAllMovies(let page):
-            urlComponents.path = "/3/movie/popular"
+            urlComponents.path = "/\(baseNumberParameter)/movie/popular"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "page", value: String(page))
             ]
             return urlComponents.string!
         case .searchAllMovies(let searchQuery):
-            urlComponents.path = "/3/search/movie"
+            urlComponents.path = "/\(baseNumberParameter)/search/movie"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "query", value: searchQuery)

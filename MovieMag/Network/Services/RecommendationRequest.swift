@@ -12,12 +12,11 @@ enum RecommendationRequest {
 }
 
 extension RecommendationRequest: Requestable {
-    
     var URLpath: String {
         var urlComponents = URLComponents(string: baseURL)!
         switch self {
         case .fetchRecommendations(let id):
-            urlComponents.path = "/3/movie/\(id)/recommendations"
+            urlComponents.path = "/\(baseNumberParameter)/movie/\(id)/recommendations"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
             ]

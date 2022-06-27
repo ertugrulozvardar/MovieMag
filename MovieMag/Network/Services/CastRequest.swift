@@ -14,19 +14,18 @@ enum CastRequest {
 }
 
 extension CastRequest: Requestable {
-    
     var URLpath: String {
         var urlComponents = URLComponents(string: baseURL)!
         switch self {
         case .fetchSingleCast(let castId):
-            urlComponents.path = "/3/person/\(castId)"
+            urlComponents.path = "/\(baseNumberParameter)/person/\(castId)"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "language", value: languageCode)
             ]
             return urlComponents.string!
         case .fetchCasts(let id):
-            urlComponents.path = "/3/movie/\(id)/credits"
+            urlComponents.path = "/\(baseNumberParameter)/movie/\(id)/credits"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
             ]

@@ -28,14 +28,17 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     @IBAction func addToFavoritePressed(_ sender: UIButton) {
-        switch addFavoriteIcon.currentImage {
-        case UIImage(systemName: "star"):
-            addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            if let currentMovie = movie {
-                dataManager.saveToFavorites(movie: currentMovie)
+        if let currentMovie = movie {
+            if !dataManager.isInFavorites(movie: currentMovie) {
+                    dataManager.saveToFavorites(movie: currentMovie)
+                    addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+       
+            } else {
+                if let currentMovie = movie {
+                    dataManager.removeFromfavorites(movie: currentMovie)
+                    addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
+                }
             }
-        default:
-            addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
 }

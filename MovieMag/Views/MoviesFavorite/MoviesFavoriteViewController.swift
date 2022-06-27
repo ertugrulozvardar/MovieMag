@@ -11,6 +11,7 @@ class MoviesFavoriteViewController: UIViewController {
 
     private var favoriteMovies = [Movie]()
     let userDefaults = UserDefaults.standard
+    private var dataManager = DataManager()
     
     @IBOutlet weak var favoritesTableView: UITableView! {
         didSet {
@@ -34,7 +35,6 @@ class MoviesFavoriteViewController: UIViewController {
     }
     
     func getFavorites() {
-        let userDefaults = UserDefaults.standard
         if let data = userDefaults.data(forKey: "FavoriteMovies") {
             favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: data)
             favoritesTableView.reloadData()
@@ -53,13 +53,7 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
   
         let movie = favoriteMovies[indexPath.row]
-        cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
-            favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
-            if !favoriteMovies.contains(movie) {
-                cell.addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
-            }
-        }
+        cell.addFavoriteIcon.isHidden = true
         cell.configure(movie: movie)
         return cell
     }
