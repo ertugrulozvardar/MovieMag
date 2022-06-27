@@ -34,9 +34,6 @@ struct MovieService: MovieServiceProtocol {
     
     func searchAllMovies(with searchQuery: String, completion: @escaping (Result<AllMovieResponse, NetworkError>) -> Void) {
         // Comment
-        guard !searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            return
-        }
         if let newApiKey = serviceParameterManager.getApiKey() {
             let url = "\(serviceParameterManager.setBaseUrl())/search/movie?api_key=\(newApiKey)&query=\(searchQuery)"
             let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)

@@ -18,8 +18,6 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             configureTableView()
-            tableView.refreshControl = UIRefreshControl()
-            tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         }
     }
     
@@ -30,6 +28,7 @@ class MovieListViewController: UIViewController {
     private let movieService: MovieServiceProtocol = MovieService()
     private let userDefaults = UserDefaults.standard
     private var favoriteMovies = [Movie]()
+    private var searchMovieTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +46,8 @@ class MovieListViewController: UIViewController {
         destroyAnimationImageView()
     }
     
-    @objc private func didPullToRefresh() {
-        fetchMovies()
+    var isSearchBarEmpty: Bool {
+      return searchVC.searchBar.text?.isEmpty ?? true
     }
     
     private func animate() {
@@ -86,16 +85,11 @@ class MovieListViewController: UIViewController {
     }
         
     func fetchMovies() {
-        if tableView.refreshControl?.isRefreshing == true {
-            movies.removeAll()
-            currentPage = 1
-        }
         isFetchingMovies = true
         movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
-                    self?.tableView.refreshControl?.endRefreshing()
                     self?.tableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
@@ -165,11 +159,23 @@ extension MovieListViewController: UITableViewDataSourcePrefetching {
 }
 //MARK: -SearchBar Delegate Methods
 extension MovieListViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else {
-            return
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let text = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let timer = searchMovieTimer {
+            timer.invalidate()
         }
-        searchMovies(searchQuery: text)
+        searchMovieTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.startSearch(_:)), userInfo: text, repeats: false)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        currentPage = 1
+        fetchMovies()
+    }
+
+    @objc func startSearch(_ timer: Timer) {
+        if let searchText = timer.userInfo as? String {
+            searchMovies(searchQuery: searchText)
+        }
     }
 }
 

@@ -44,7 +44,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ty2-Lk-uwN"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ddH-fc-Pe7" firstAttribute="top" secondItem="ty2-Lk-uwN" secondAttribute="top" id="7Hg-Iw-NYw"/>
                             <constraint firstItem="ty2-Lk-uwN" firstAttribute="bottom" secondItem="ddH-fc-Pe7" secondAttribute="bottom" id="Fkm-2n-hU1"/>
@@ -241,12 +241,11 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGU-0f-fUR">
                                                                 <rect key="frame" x="0.0" y="33" width="384" height="150"/>
                                                                 <subviews>
-                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GVd-mG-hQi">
+                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GVd-mG-hQi">
                                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="150"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lMh-WU-yzm">
-                                                                            <size key="itemSize" width="128" height="128"/>
+                                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lMh-WU-yzm">
+                                                                            <size key="itemSize" width="100" height="150"/>
                                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -261,6 +260,10 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="150" id="UUR-se-pAq"/>
+                                                                    <constraint firstItem="GVd-mG-hQi" firstAttribute="leading" secondItem="tGU-0f-fUR" secondAttribute="leading" id="a4e-rn-U96"/>
+                                                                    <constraint firstItem="GVd-mG-hQi" firstAttribute="top" secondItem="tGU-0f-fUR" secondAttribute="top" id="bHt-vk-nSq"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="GVd-mG-hQi" secondAttribute="trailing" id="eeA-3X-mND"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="GVd-mG-hQi" secondAttribute="bottom" id="iRA-rN-NtQ"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Cast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5y-tz-hwb">
@@ -273,12 +276,11 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYX-o9-axj">
                                                                 <rect key="frame" x="0.0" y="226" width="384" height="100"/>
                                                                 <subviews>
-                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-qo-4Vb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-qo-4Vb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1G3-kr-h1e">
-                                                                            <size key="itemSize" width="105" height="90"/>
+                                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1G3-kr-h1e">
+                                                                            <size key="itemSize" width="280" height="90"/>
                                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -293,6 +295,10 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="7RN-qX-ogk"/>
+                                                                    <constraint firstItem="Rd6-qo-4Vb" firstAttribute="top" secondItem="ZYX-o9-axj" secondAttribute="top" id="QXj-BJ-lJQ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Rd6-qo-4Vb" secondAttribute="trailing" id="Z8Z-vx-9fn"/>
+                                                                    <constraint firstItem="Rd6-qo-4Vb" firstAttribute="leading" secondItem="ZYX-o9-axj" secondAttribute="leading" id="qs6-qb-FPv"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Rd6-qo-4Vb" secondAttribute="bottom" id="xg4-Wh-QxR"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -361,7 +367,7 @@
                     </view>
                     <connections>
                         <outlet property="budgetLabel" destination="ilI-3y-49R" id="6PQ-nH-yDJ"/>
-                        <outlet property="castView" destination="Rd6-qo-4Vb" id="jgl-Qe-gKS"/>
+                        <outlet property="castCollectionView" destination="Rd6-qo-4Vb" id="8N0-km-imU"/>
                         <outlet property="durationLabel" destination="JXg-oy-rDL" id="itM-VL-3la"/>
                         <outlet property="genresLabel" destination="YWt-TL-Yls" id="CbD-Qe-Llh"/>
                         <outlet property="homepageButton" destination="Ggv-te-Q2b" id="TFr-K3-26b"/>
@@ -372,7 +378,7 @@
                         <outlet property="overviewLabel" destination="FIU-2y-xu5" id="5So-uQ-x3W"/>
                         <outlet property="productionCompaniesLabel" destination="NtR-BG-JnB" id="eKZ-1w-fNS"/>
                         <outlet property="ratingLabel" destination="y8m-CN-qhT" id="kyi-XS-oEy"/>
-                        <outlet property="recommendationsView" destination="GVd-mG-hQi" id="GAk-Ft-5Oa"/>
+                        <outlet property="recommendationsCollectionView" destination="GVd-mG-hQi" id="igT-l5-81K"/>
                         <outlet property="releaseDateLabel" destination="28o-ll-wIn" id="DYy-9i-QyB"/>
                         <outlet property="revenueLabel" destination="ElB-4A-azx" id="zw8-oO-rqr"/>
                     </connections>
@@ -604,9 +610,6 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
