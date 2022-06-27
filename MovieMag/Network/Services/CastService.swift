@@ -14,22 +14,13 @@ protocol CastServiceProtocol {
 
 struct CastService: CastServiceProtocol {
     private let network = Network()
-    private let serviceParameterManager = ServiceParameterManager()
-    private let languageCode = Locale.current.languageCode
     
     func fetchSingleCast(castId: Int, completion: @escaping (Result<CastDetail, NetworkError>) -> Void) {
-        if let newApiKey = serviceParameterManager.getApiKey() {
-            let urlRequest = URLRequest(url: URL(string: "\(serviceParameterManager.setBaseUrl())/person/\(castId)?api_key=\(newApiKey)&language=\(languageCode ?? "en")")!)
-            network.performRequest(request: urlRequest, completion: completion)
-        }
-        
+        network.performRequest(request: CastRequest.fetchSingleCast(castId: castId), completion: completion)
     }
     
     func fetchCasts(id: Int, completion: @escaping (Result<Credits, NetworkError>) -> Void) {
-        if let newApiKey = serviceParameterManager.getApiKey() {
-            let urlRequest = URLRequest(url: URL(string: "\(serviceParameterManager.setBaseUrl())/movie/\(id)/credits?api_key=\(newApiKey)")!)
-            network.performRequest(request: urlRequest, completion: completion)
-        }
+        network.performRequest(request: CastRequest.fetchCasts(id: id), completion: completion)
     }
 }
 

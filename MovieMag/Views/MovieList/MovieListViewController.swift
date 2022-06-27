@@ -86,7 +86,7 @@ class MovieListViewController: UIViewController {
         
     func fetchMovies() {
         isFetchingMovies = true
-        movieService.fetchAllMovies(atPage: currentPage) { [weak self] result in
+        movieService.fetchAllMovies(page: currentPage) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
@@ -101,7 +101,7 @@ class MovieListViewController: UIViewController {
     
     func searchMovies(searchQuery: String) {
         isFetchingMovies = true
-        movieService.searchAllMovies(with: searchQuery) { [weak self] result in
+        movieService.searchAllMovies(searchQuery: searchQuery) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.movies = response.results ?? []

@@ -10,8 +10,8 @@ import Foundation
 struct Network {
     private let urlSession = URLSession.shared
     
-    func performRequest<T: Codable>(request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        let task = urlSession.dataTask(with: request) { data, response, error in
+    func performRequest<T: Codable>(request: Requestable, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        let task = urlSession.dataTask(with: request.convertToURLRequest()) { data, response, error in
             DispatchQueue.main.async {
                 if let data = data {
                     do {
