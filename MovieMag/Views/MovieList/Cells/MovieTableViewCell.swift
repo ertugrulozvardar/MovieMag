@@ -10,7 +10,13 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var movieImageView: UIImageView!
+    var formatter = ModelURLFormatter()
+    
+    @IBOutlet weak var movieImageView: UIImageView! {
+        didSet {
+            movieImageView.kf.setImage(with: formatter.defaultPosterURL)
+        }
+    }
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!

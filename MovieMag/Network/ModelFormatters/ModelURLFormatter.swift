@@ -11,8 +11,9 @@ struct ModelURLFormatter {
     
     private let baseUrl = "https://image.tmdb.org/"
     private let baseParameter = "t/p/w500"
-    private let defaultProfileURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/120px-User-avatar.svg.png"
-    private let defaultPosterURL = "https://www.reelviews.net/resources/img/default_poster.jpg"
+    let defaultProfileURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/120px-User-avatar.svg.png")
+    let defaultPosterURL = URL(string: "https://www.reelviews.net/resources/img/default_poster.jpg")
+    
     
     func setBaseUrl () -> String {
         return baseUrl + String(baseParameter)
@@ -26,7 +27,7 @@ struct ModelURLFormatter {
         if let posterPath = posterPath {
             return URL(string: "\(setBaseUrl())\(posterPath)")!
         } else {
-            return URL(string: defaultPosterURL)!
+            return defaultPosterURL!
         }
     }
     
@@ -34,7 +35,7 @@ struct ModelURLFormatter {
         if let profilePath = profilePath {
             return URL(string: "\(setBaseUrl())\(profilePath)")!
         } else {
-            return URL(string: defaultProfileURL)!
+            return defaultProfileURL!
         }
     }
 }
