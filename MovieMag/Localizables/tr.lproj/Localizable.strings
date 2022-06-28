@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  MovieMag
+
+  Created by pc on 28.06.2022.
+  
+*/
+
+"MovieDetailString_movieOverviewLabel" = "Genel Bakış";
+"MovieDetailString_movieAdditionalInformationLabel" = "Ek Bilgiler";
+"MovieDetailString_movieBudgetLabel" = "Film Bütçesi:";
+"MovieDetailString_movieOriginalLanguageLabel" = "Orjinal Dil:";
+"MovieDetailString_movieOriginalTitleLabel" = "Orjinal Başlık:";
+"MovieDetailString_movieRevenueLabel" = "Hasılat:";
+"MovieDetailString_movieProductionCompaniesLabel" = "Yapımcı:";
+"MovieDetailString_movieHomepageLabel" = "Resmi Site:";
+"MovieDetailString_movieRecommendationsLabel" = "Tavsiye edilen filmler";
+"MovieDetailString_movieCastLabel" = "Oyuncu Kadrosu";
+"MovieDetailString_homepageButton" = "Resmi site için tıkla";
+"CastDetailString_castBirthdayLabel" = "Doğum tarihi:";
+"CastDetailString_castBirthplaceLabel" = "Doğum Yeri:";
+"CastDetailString_castDeathdayLabel" = "Vefat tarihi:";
+"CastDetailString_castBiographyLabel" = "Biyografi";

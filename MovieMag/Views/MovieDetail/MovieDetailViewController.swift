@@ -11,8 +11,18 @@ import SafariServices
 
 class MovieDetailViewController: UIViewController {
 
-    @IBOutlet weak var recommendationsCollectionView: UICollectionView! //recommendationsCollectionvİEW
+    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
     
+    @IBOutlet weak var movieOverviewLabel: UILabel!
+    @IBOutlet weak var movieAdditionalInformationLabel: UILabel!
+    @IBOutlet weak var movieBudgetLabel: UILabel!
+    @IBOutlet weak var movieOriginalLanguageLabel: UILabel!
+    @IBOutlet weak var movieOriginalTitleLabel: UILabel!
+    @IBOutlet weak var movieRevenueLabel: UILabel!
+    @IBOutlet weak var movieProductionCompaniesLabel: UILabel!
+    @IBOutlet weak var movieHomepageLabel: UILabel!
+    @IBOutlet weak var movieRecommendationsLabel: UILabel!
+    @IBOutlet weak var movieCastLabel: UILabel!
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
@@ -38,6 +48,7 @@ class MovieDetailViewController: UIViewController {
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        localizeLabelTexts()
         registerCollectionCells()
         getMovieDetail()
         getRecommendations()
@@ -112,6 +123,20 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    func localizeLabelTexts() {
+        movieOverviewLabel.text = MovieDetailString.movieOverviewLabel.localized
+        movieAdditionalInformationLabel.text = MovieDetailString.movieAdditionalInformationLabel.localized
+        movieBudgetLabel.text = MovieDetailString.movieBudgetLabel.localized
+        movieOriginalLanguageLabel.text = MovieDetailString.movieOriginalLanguageLabel.localized
+        movieOriginalTitleLabel.text = MovieDetailString.movieOriginalTitleLabel.localized
+        movieRevenueLabel.text = MovieDetailString.movieRevenueLabel.localized
+        movieProductionCompaniesLabel.text = MovieDetailString.movieProductionCompaniesLabel.localized
+        movieHomepageLabel.text = MovieDetailString.movieHomepageLabel.localized
+        movieRecommendationsLabel.text = MovieDetailString.movieRecommendationsLabel.localized
+        movieCastLabel.text = MovieDetailString.movieCastLabel.localized
+        homepageButton.setTitle(MovieDetailString.homepageButton.localized, for: .normal)
+    }
+    
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
         directToURL(url: movieDetail?.homepage ?? "")
     }
@@ -133,7 +158,7 @@ class MovieDetailViewController: UIViewController {
         genresLabel.text = movieDetail.genres?.getGenresText()
         budgetLabel.text = movieDetail.budgetText
         revenueLabel.text = movieDetail.revenueText
-        productionCompaniesLabel.text = movieDetail.productionCompanies?.first?.name
+        productionCompaniesLabel.text = movieDetail.productionCompanies?.getProductionCompaniesText()
         overviewLabel.text = movieDetail.overview
     }
 }

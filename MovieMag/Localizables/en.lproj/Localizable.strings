@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  MovieMag
+
+  Created by pc on 28.06.2022.
+  
+*/
+
+"MovieDetailString_movieOverviewLabel" = "Overview";
+"MovieDetailString_movieAdditionalInformationLabel" = "Additional Information";
+"MovieDetailString_movieBudgetLabel" = "Budget:";
+"MovieDetailString_movieOriginalLanguageLabel" = "Original Language:";
+"MovieDetailString_movieOriginalTitleLabel" = "Original Title:";
+"MovieDetailString_movieRevenueLabel" = "Revenue:";
+"MovieDetailString_movieProductionCompaniesLabel" = "Produced by:";
+"MovieDetailString_movieHomepageLabel" = "Homepage:";
+"MovieDetailString_movieRecommendationsLabel" = "Recommendations";
+"MovieDetailString_movieCastLabel" = "Movie Cast";
+"MovieDetailString_homepageButton" = "Click to official page";
+"CastDetailString_castBirthdayLabel" = "Born:";
+"CastDetailString_castBirthplaceLabel" = "Birthplace:";
+"CastDetailString_castDeathdayLabel" = "Deathday:";
+"CastDetailString_castBiographyLabel" = "Biography";

@@ -9,6 +9,10 @@ import UIKit
 
 class CastDetailViewController: UIViewController {
 
+    @IBOutlet weak var castBirthdayLabel: UILabel!
+    @IBOutlet weak var castBirthplaceLabel: UILabel!
+    @IBOutlet weak var castDeathdayLabel: UILabel!
+    @IBOutlet weak var castBiographyLabel: UILabel!
     @IBOutlet weak var actorNameLabel: UILabel!
     @IBOutlet weak var actorImageView: UIImageView!
     @IBOutlet weak var actorBirthdayLabel: UILabel!
@@ -24,6 +28,7 @@ class CastDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        localizeLabelTexts()
         getCastDetail()
         
     }
@@ -66,5 +71,13 @@ class CastDetailViewController: UIViewController {
         }
         actorBiographyLabel.text = castDetail.biography
     }
+    
+    func localizeLabelTexts() {
+        castBirthdayLabel.text = CastDetailString.castBirthdayLabel.localized
+        castBirthplaceLabel.text = CastDetailString.castBirthplaceLabel.localized
+        castDeathdayLabel.text = CastDetailString.castDeathdayLabel.localized
+        castBiographyLabel.text = CastDetailString.castBiographyLabel.localized
+    }
+
 
 }
