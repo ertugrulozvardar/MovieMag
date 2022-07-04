@@ -10,8 +10,6 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
     
-    var formatter = ModelURLFormatter()
-    
     @IBOutlet weak var movieImageView: UIImageView! {
         didSet {
             movieImageView.kf.setImage(with: formatter.defaultPosterURL)
@@ -23,7 +21,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var addFavoriteIcon: UIButton!
     
     var movie: Movie?
-    private var dataManager = DataManager()
+    var dataManager = DataManager()
+    var formatter = ModelURLFormatter()
     
     func configure(movie: Movie) {
         self.movie = movie
@@ -36,8 +35,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBAction func addToFavoritePressed(_ sender: UIButton) {
         if let currentMovie = movie {
             if !dataManager.isInFavorites(movie: currentMovie) {
-                    dataManager.saveToFavorites(movie: currentMovie)
-                    addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                dataManager.saveToFavorites(movie: currentMovie)
+                addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
        
             } else {
                 if let currentMovie = movie {

@@ -306,7 +306,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmm-kw-ohv">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmm-kw-ohv">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="nmm-kw-ohv" secondAttribute="height" multiplier="1:1" id="Jpj-px-WnE"/>
@@ -315,34 +315,50 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="N5G-hC-CZc">
                                                 <rect key="frame" x="0.0" y="85" width="414" height="230.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morbius" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzK-EX-gFJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
-                                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="31"/>
-                                                        <color key="textColor" systemColor="systemGray5Color"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzK-EX-gFJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="31"/>
+                                                        <color key="textColor" systemColor="systemGray6Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-ll-wIn">
-                                                        <rect key="frame" x="0.0" y="123" width="414" height="107.5"/>
-                                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="26"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28o-ll-wIn">
+                                                        <rect key="frame" x="0.0" y="5" width="414" height="225.5"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="27"/>
                                                         <color key="textColor" systemColor="systemGray6Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOq-a2-lSV">
+                                                <rect key="frame" x="347" y="0.0" width="67" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="29" weight="medium"/>
+                                                    <color key="baseForegroundColor" systemColor="systemYellowColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="addToFavoritesPressed:" destination="C8p-if-6Jc" eventType="touchUpInside" id="OW5-g2-EkS"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="O6j-EO-1YS" secondAttribute="trailing" constant="15" id="4Sa-fm-ecg"/>
                                             <constraint firstItem="nmm-kw-ohv" firstAttribute="top" secondItem="FTS-EG-BFF" secondAttribute="top" id="4Wy-zD-lNy"/>
+                                            <constraint firstItem="nmm-kw-ohv" firstAttribute="top" secondItem="cOq-a2-lSV" secondAttribute="bottom" constant="-50" id="6U5-hD-23Y"/>
                                             <constraint firstAttribute="trailing" secondItem="nmm-kw-ohv" secondAttribute="trailing" id="BvA-Re-L86"/>
                                             <constraint firstItem="O6j-EO-1YS" firstAttribute="top" secondItem="nmm-kw-ohv" secondAttribute="bottom" constant="15" id="DaU-Ff-21O"/>
                                             <constraint firstItem="nmm-kw-ohv" firstAttribute="leading" secondItem="FTS-EG-BFF" secondAttribute="leading" id="N0f-qb-wZL"/>
                                             <constraint firstItem="N5G-hC-CZc" firstAttribute="width" secondItem="nmm-kw-ohv" secondAttribute="width" id="O2M-iD-h8W"/>
                                             <constraint firstItem="O6j-EO-1YS" firstAttribute="leading" secondItem="FTS-EG-BFF" secondAttribute="leading" constant="15" id="T5Q-F0-J7v"/>
+                                            <constraint firstItem="cOq-a2-lSV" firstAttribute="width" secondItem="nmm-kw-ohv" secondAttribute="width" multiplier="0.161836" id="TZb-3E-l4F"/>
                                             <constraint firstItem="N5G-hC-CZc" firstAttribute="leading" secondItem="nmm-kw-ohv" secondAttribute="leading" id="bCu-Tq-26h"/>
                                             <constraint firstItem="nmm-kw-ohv" firstAttribute="top" secondItem="N5G-hC-CZc" secondAttribute="bottom" constant="-315.5" id="beJ-R4-mpl"/>
                                             <constraint firstAttribute="bottom" secondItem="O6j-EO-1YS" secondAttribute="bottom" constant="15" id="e84-jF-Q6c"/>
+                                            <constraint firstItem="cOq-a2-lSV" firstAttribute="height" secondItem="nmm-kw-ohv" secondAttribute="height" multiplier="0.0748792" constant="19" id="f2F-Q7-5Dv"/>
                                             <constraint firstItem="N5G-hC-CZc" firstAttribute="trailing" secondItem="nmm-kw-ohv" secondAttribute="trailing" id="oQ5-PZ-WWQ"/>
+                                            <constraint firstItem="cOq-a2-lSV" firstAttribute="leading" secondItem="nmm-kw-ohv" secondAttribute="trailing" constant="-67" id="teb-LE-2cv"/>
                                             <constraint firstItem="N5G-hC-CZc" firstAttribute="height" secondItem="nmm-kw-ohv" secondAttribute="height" multiplier="0.556763" id="tuR-gI-3wW"/>
                                         </constraints>
                                     </view>
@@ -366,6 +382,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToFavoritesButton" destination="cOq-a2-lSV" id="19Q-DM-lj5"/>
                         <outlet property="budgetLabel" destination="ilI-3y-49R" id="6PQ-nH-yDJ"/>
                         <outlet property="castCollectionView" destination="Rd6-qo-4Vb" id="8N0-km-imU"/>
                         <outlet property="durationLabel" destination="JXg-oy-rDL" id="itM-VL-3la"/>
@@ -618,6 +635,7 @@
     </scenes>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -627,9 +645,6 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

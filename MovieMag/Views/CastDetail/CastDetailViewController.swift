@@ -25,6 +25,7 @@ class CastDetailViewController: UIViewController {
     private var castDetail: CastDetail?
     private let movieService: MovieServiceProtocol = MovieService()
     private let castService: CastServiceProtocol = CastService()
+    private var alertManager = AlertManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +46,9 @@ class CastDetailViewController: UIViewController {
                 }
             }
         } else {
-            let alertController = UIAlertController(title: "Hata!", message: "Karakter bulunamadı", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
-                self.navigationController?.popViewController(animated: true)
+            if let currentNavigationController = self.navigationController {
+                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
             }
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true)
         }
     }
     

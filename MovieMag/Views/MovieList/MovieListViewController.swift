@@ -26,6 +26,7 @@ class MovieListViewController: UIViewController {
     private var currentPage = 1
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
+    private var dataManager = DataManager()
     private let userDefaults = UserDefaults.standard
     private var favoriteMovies = [Movie]()
     private var searchMovieTimer: Timer?
@@ -118,20 +119,17 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                return movies.count
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self), for: indexPath) as! MovieTableViewCell
         let movie: Movie = movies[indexPath.row]
-        if let getFavMovies = userDefaults.data(forKey: "FavoriteMovies") {
-            favoriteMovies = try! PropertyListDecoder().decode([Movie].self, from: getFavMovies)
-            if favoriteMovies.contains(movie) {
-                cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            } else  {
-                cell.addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
-            }
+        if dataManager.isInFavorites(movie: movie) {
+            cell.addFavoriteIcon.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            cell.addFavoriteIcon.setImage(UIImage(systemName: "star"), for: .normal)
         }
         cell.configure(movie: movie)
         return cell
@@ -139,8 +137,9 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let movieDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
-            
-            movieDetailsVC.movieId = movies[indexPath.row].id
+            let movie: Movie = movies[indexPath.row]
+            movieDetailsVC.movieId = movie.id
+            movieDetailsVC.movie = movie
             self.navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
     }

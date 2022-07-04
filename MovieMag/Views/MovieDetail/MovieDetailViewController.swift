@@ -11,8 +11,14 @@ import SafariServices
 
 class MovieDetailViewController: UIViewController {
 
-    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
+    @IBOutlet weak var movieImageView: UIImageView! {
+        didSet {
+            updateFavoritesIcon()
+        }
+    }
     
+    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
+    @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var movieOverviewLabel: UILabel!
     @IBOutlet weak var movieAdditionalInformationLabel: UILabel!
     @IBOutlet weak var movieBudgetLabel: UILabel!
@@ -23,8 +29,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieHomepageLabel: UILabel!
     @IBOutlet weak var movieRecommendationsLabel: UILabel!
     @IBOutlet weak var movieCastLabel: UILabel!
-    @IBOutlet weak var castCollectionView: UICollectionView!
-    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
@@ -37,8 +41,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var productionCompaniesLabel: UILabel!
     @IBOutlet weak var homepageButton: UIButton!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var addToFavoritesButton: UIButton!
+    
     
     var movieId: Int?
+    var movie: Movie?
+    var dataManager = DataManager()
+    var alertManager = AlertManager()
     private let movieService: MovieServiceProtocol = MovieService()
     private let castService: CastServiceProtocol = CastService()
     private let recommendationService: RecommendationServiceProtocol = RecommendationService()
@@ -72,12 +81,9 @@ class MovieDetailViewController: UIViewController {
                 }
             }
         } else {
-            let alertController = UIAlertController(title: "Hata!", message: "Karakter bulunamadı", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
-                self.navigationController?.popViewController(animated: true)
+            if let currentNavigationController = self.navigationController {
+                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
             }
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true)
         }
     }
     
@@ -93,12 +99,9 @@ class MovieDetailViewController: UIViewController {
                 }
             }
         } else {
-            let alertController = UIAlertController(title: "Hata!", message: "Karakter bulunamadı", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
-                self.navigationController?.popViewController(animated: true)
+            if let currentNavigationController = self.navigationController {
+                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
             }
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true)
         }
     }
     
@@ -114,12 +117,9 @@ class MovieDetailViewController: UIViewController {
                 }
             }
         } else {
-            let alertController = UIAlertController(title: "Hata!", message: "Karakter bulunamadı", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
-                self.navigationController?.popViewController(animated: true)
+            if let currentNavigationController = self.navigationController {
+                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
             }
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true)
         }
     }
     
@@ -161,6 +161,38 @@ class MovieDetailViewController: UIViewController {
         productionCompaniesLabel.text = movieDetail.productionCompanies?.getProductionCompaniesText()
         overviewLabel.text = movieDetail.overview
     }
+    
+    @IBAction func addToFavoritesPressed(_ sender: UIButton) {
+        if let currentMovie = movie {
+            if !dataManager.isInFavorites(movie: currentMovie) {
+                    dataManager.saveToFavorites(movie: currentMovie)
+                if let currentNavigationController = self.navigationController {
+                    alertManager.createAlertForAddingFavorites(navigationController: currentNavigationController, viewController: self)
+                }
+                    addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+       
+            } else {
+                if let currentMovie = movie {
+                    dataManager.removeFromfavorites(movie: currentMovie)
+                    if let currentNavigationController = self.navigationController {
+                        alertManager.createAlertForRemovingFavorites(navigationController: currentNavigationController, viewController: self)
+                    }
+                    addToFavoritesButton.setImage(UIImage(systemName: "star"), for: .normal)
+                }
+            }
+        }
+    }
+    
+    func updateFavoritesIcon() {
+        if let currentMovie = movie {
+            if dataManager.isInFavorites(movie: currentMovie) {
+                addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                addToFavoritesButton.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
+    }
+    
 }
 
 //MARK: -UICollectionView Methods
