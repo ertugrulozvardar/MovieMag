@@ -73,10 +73,18 @@ class MovieListViewController: UIViewController {
 
     }
     
+    private func createLoadingSpinner() -> UIView {
+        let loadingFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let loadingSpinner = UIActivityIndicatorView()
+        loadingSpinner.center = loadingFooterView.center
+        loadingFooterView.addSubview(loadingSpinner)
+        loadingSpinner.startAnimating()
+        return loadingFooterView
+    }
+    
     func configureTableView() {
         self.moviesTableView.dataSource = self
         self.moviesTableView.delegate = self
-        self.moviesTableView.prefetchDataSource = self
         self.moviesTableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
     }
     
@@ -90,6 +98,9 @@ class MovieListViewController: UIViewController {
     func fetchMovies() {
         isFetchingMovies = true
         movieService.fetchAllMovies(page: currentPage) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.moviesTableView.tableFooterView = nil
+            }
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
@@ -158,16 +169,15 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
     }
-}
-
-//MARK: -UITableViewDataSourcePrefetch
-extension MovieListViewController: UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        for index in indexPaths {
-            if index.row >= movies.count - 1 && !isFetchingMovies {
-                fetchMovies()
-                break
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (moviesTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            guard !isFetchingMovies else {
+                return
             }
+            self.moviesTableView.tableFooterView = createLoadingSpinner()
+            fetchMovies()
         }
     }
 }
@@ -193,26 +203,5 @@ extension MovieListViewController: UISearchBarDelegate {
     }
 }
 
-//MARK: -TableView Methods
-extension UITableView {
-
-    func setEmptyMessage(_ message: String) {
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        messageLabel.text = message
-        messageLabel.textColor = .black
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        messageLabel.sizeToFit()
-
-        self.backgroundView = messageLabel
-        self.separatorStyle = .none
-    }
-
-    func restore() {
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
-    }
-}
 
 

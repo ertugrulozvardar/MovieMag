@@ -36,4 +36,13 @@ struct AlertManager {
         alertController.addAction(okButton)
         viewController.present(alertController, animated: true)
     }
+    
+    func createAlertForDirectingHomepage(navigationController: UINavigationController, viewController: UIViewController) {
+        let alertController = UIAlertController(title: "Hata!", message: "Film linki bulunamadı", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Tamam", style: .default) { action in
+            navigationController.popViewController(animated: true)
+        }
+        alertController.addAction(okButton)
+        viewController.present(alertController, animated: true)
+    }
 }

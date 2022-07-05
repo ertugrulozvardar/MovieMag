@@ -67,8 +67,8 @@ class MovieDetailViewController: UIViewController {
     }
     
     func registerCollectionCells() {
-        recommendationsCollectionView.register(UINib(nibName: "RecommendationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendationCollectionViewCell")
-        castCollectionView.register(UINib(nibName: "CastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CastCollectionViewCell")
+        recommendationsCollectionView.register(UINib(nibName: RecommendationCollectionViewCell.reuseIdentifierString, bundle: nil), forCellWithReuseIdentifier: RecommendationCollectionViewCell.reuseIdentifierString)
+        castCollectionView.register(UINib(nibName: CastCollectionViewCell.reuseIdentifierString, bundle: nil), forCellWithReuseIdentifier: CastCollectionViewCell.reuseIdentifierString)
     }
     
     func getMovieDetail() {
@@ -140,7 +140,15 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
-        directToURL(url: movieDetail?.homepage ?? "")
+        if let currentHomepage = movieDetail?.homepage {
+            directToURL(url: currentHomepage)
+        } else {
+            if let currentNavigationController = self.navigationController {
+                alertManager.createAlertForAddingFavorites(navigationController: currentNavigationController, viewController: self)
+            }
+            
+        }
+        
     }
     
     func directToURL(url: String) {

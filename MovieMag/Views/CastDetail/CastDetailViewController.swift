@@ -19,7 +19,6 @@ class CastDetailViewController: UIViewController {
     @IBOutlet weak var actorBirthPlaceLabel: UILabel!
     @IBOutlet weak var actorDeathDayLabel: UILabel!
     @IBOutlet weak var actorBiographyLabel: UILabel!
-    let currentLanguage = Locale.current.languageCode
     
     var castId: Int?
     private var castDetail: CastDetail?
@@ -31,7 +30,6 @@ class CastDetailViewController: UIViewController {
         super.viewDidLoad()
         localizeLabelTexts()
         getCastDetail()
-        
     }
     
     func getCastDetail() {
@@ -57,17 +55,8 @@ class CastDetailViewController: UIViewController {
         actorNameLabel.text = castDetail.name
         actorBirthdayLabel.text = castDetail.birthdayText
         actorBirthPlaceLabel.text = castDetail.placeOfBirth
-        if let deathDayInfo = castDetail.deathdayText {
-            actorDeathDayLabel.text = deathDayInfo
-        } else {
-            if currentLanguage == "en" {
-                actorDeathDayLabel.text = "Alive"
-            } else {
-                actorDeathDayLabel.text = "Yaşıyor"
-            }
-            
-        }
         actorBiographyLabel.text = castDetail.biography
+        actorDeathDayLabel.text = castDetail.deathdayText
     }
     
     func localizeLabelTexts() {
@@ -76,6 +65,4 @@ class CastDetailViewController: UIViewController {
         castDeathdayLabel.text = CastDetailString.castDeathdayLabel.localized
         castBiographyLabel.text = CastDetailString.castBiographyLabel.localized
     }
-
-
 }

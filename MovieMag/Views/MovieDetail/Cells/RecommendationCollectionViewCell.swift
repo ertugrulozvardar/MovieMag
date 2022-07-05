@@ -15,5 +15,4 @@ class RecommendationCollectionViewCell: UICollectionViewCell {
     func configure(recommendedMovie: Movie) {
         recommendedMovieImageView.kf.setImage(with: recommendedMovie.posterURL)
     }
-
 }
