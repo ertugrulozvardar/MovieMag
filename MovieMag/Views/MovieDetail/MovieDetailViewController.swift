@@ -236,8 +236,10 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             }
         } else {
             if let movieDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
-
-                movieDetailsVC.movieId = recommendedMovies[indexPath.row].id
+                
+                let recommendedMovie = recommendedMovies[indexPath.row]
+                movieDetailsVC.movieId = recommendedMovie.id
+                movieDetailsVC.movie = 	recommendedMovie
                 self.navigationController?.pushViewController(movieDetailsVC, animated: true)
             }
         }
