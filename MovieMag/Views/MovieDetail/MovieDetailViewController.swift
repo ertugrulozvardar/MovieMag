@@ -10,7 +10,7 @@ import Kingfisher
 import SafariServices
 
 class MovieDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var movieImageView: UIImageView! {
         didSet {
             updateFavoritesIcon()
@@ -47,6 +47,7 @@ class MovieDetailViewController: UIViewController {
     var movieId: Int?
     var movie: Movie?
     var dataManager = DataManager()
+    var notificationCenter = NotificationCenter.default
     var alertManager = AlertManager()
     private let movieService: MovieServiceProtocol = MovieService()
     private let castService: CastServiceProtocol = CastService()
@@ -54,9 +55,10 @@ class MovieDetailViewController: UIViewController {
     private var movieDetail: MovieDetail?
     private var recommendedMovies: [Movie] = []
     private var castMembers: [Cast] = []
-            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeNotificationRequest()
         localizeLabelTexts()
         registerCollectionCells()
         getMovieDetail()
@@ -165,12 +167,12 @@ class MovieDetailViewController: UIViewController {
     @IBAction func addToFavoritesPressed(_ sender: UIButton) {
         if let currentMovie = movie {
             if !dataManager.isInFavorites(movie: currentMovie) {
-                    dataManager.saveToFavorites(movie: currentMovie)
+                dataManager.saveToFavorites(movie: currentMovie)
                 if let currentNavigationController = self.navigationController {
                     alertManager.createAlertForAddingFavorites(navigationController: currentNavigationController, viewController: self)
                 }
-                    addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-       
+                addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                
             } else {
                 if let currentMovie = movie {
                     dataManager.removeFromfavorites(movie: currentMovie)
@@ -181,9 +183,22 @@ class MovieDetailViewController: UIViewController {
                 }
             }
         }
+        notificationCenter.post(name: Notification.Name("MovieRemoved"), object: nil)
     }
     
     func updateFavoritesIcon() {
+        adjustFavoriteIcon()
+    }
+    
+    @objc func movieChanged() {
+        adjustFavoriteIcon()
+    }
+    
+    func makeNotificationRequest() {
+        notificationCenter.addObserver(self, selector: #selector(movieChanged), name: Notification.Name("MovieRemoved"), object: nil)
+    }
+    
+    func adjustFavoriteIcon() {
         if let currentMovie = movie {
             if dataManager.isInFavorites(movie: currentMovie) {
                 addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -192,9 +207,7 @@ class MovieDetailViewController: UIViewController {
             }
         }
     }
-    
 }
-
 //MARK: -UICollectionView Methods
 extension MovieDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -207,7 +220,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             return 0
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case recommendationsCollectionView:
@@ -230,7 +243,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == castCollectionView {
             if let castDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastDetailViewController.self)) as? CastDetailViewController {
-
+                
                 castDetailsVC.castId = castMembers[indexPath.row].id
                 self.navigationController?.pushViewController(castDetailsVC, animated: true)
             }

@@ -27,12 +27,14 @@ class MovieListViewController: UIViewController {
     private var isFetchingMovies = false
     private let movieService: MovieServiceProtocol = MovieService()
     private var dataManager = DataManager()
+    private var notificationCenter = NotificationCenter.default
     private let userDefaults = UserDefaults.standard
     private var favoriteMovies = [Movie]()
     private var searchMovieTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeNotificationRequest()
         view.addSubview(imageView)
         initSearchBar()
         fetchMovies()
@@ -113,6 +115,14 @@ class MovieListViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func makeNotificationRequest() {
+        notificationCenter.addObserver(self, selector: #selector(movieChanged), name: Notification.Name("MovieRemoved"), object: nil)
+    }
+    
+    @objc func movieChanged() {
+        self.moviesTableView.reloadData()
     }
 }
 //MARK: -TableView Delegate & DataSource Methods

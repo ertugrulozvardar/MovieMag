@@ -11,6 +11,7 @@ class MoviesFavoriteViewController: UIViewController {
 
     private var favoriteMovies = [Movie]()
     let userDefaults = UserDefaults.standard
+    let notificationCenter = NotificationCenter.default
     private var dataManager = DataManager()
     
     @IBOutlet weak var favoritesTableView: UITableView! {
@@ -72,7 +73,8 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
                     userDefaults.set(setFavMovies, forKey: "FavoriteMovies")
                 }
             }
-                favoritesTableView.deleteRows(at: [indexPath], with: .fade)
+            notificationCenter.post(name: Notification.Name("MovieRemoved"), object: nil)
+            favoritesTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
