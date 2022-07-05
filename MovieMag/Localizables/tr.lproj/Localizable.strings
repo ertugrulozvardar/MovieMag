@@ -17,7 +17,16 @@
 "MovieDetailString_movieRecommendationsLabel" = "Tavsiye edilen filmler";
 "MovieDetailString_movieCastLabel" = "Oyuncu Kadrosu";
 "MovieDetailString_homepageButton" = "Resmi site için tıkla";
+"MovieDetailString_alertSuccessTitle" = "Başarılı!";
+"MovieDetailString_alertFailureTitle" = "Hata!";
+"MovieDetailString_alertOKTitle" = "Tamam";
+"MovieDetailString_alertForAddingFavoritesMessage" = "Film favorilere kaydedildi";
+"MovieDetailString_alertForRemovingFavoritesMessage" = "Film favorilerden çıkarıldı";
+"MovieDetailString_alertForServicesMessage" = "Karakter bulunamadı";
+"MovieDetailString_alertForDirectingHomepageMessage" = "Film anasayfa linki bulunamadı.";
 "CastDetailString_castBirthdayLabel" = "Doğum tarihi:";
 "CastDetailString_castBirthplaceLabel" = "Doğum Yeri:";
 "CastDetailString_castDeathdayLabel" = "Vefat tarihi:";
 "CastDetailString_castBiographyLabel" = "Biyografi";
+
+

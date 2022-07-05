@@ -17,6 +17,13 @@
 "MovieDetailString_movieRecommendationsLabel" = "Recommendations";
 "MovieDetailString_movieCastLabel" = "Movie Cast";
 "MovieDetailString_homepageButton" = "Click to official page";
+"MovieDetailString_alertSuccessTitle" = "Success!";
+"MovieDetailString_alertFailureTitle" = "Failure!";
+"MovieDetailString_alertOKTitle" = "OK";
+"MovieDetailString_alertForAddingFavoritesMessage" = "Movie has been added to the favorites";
+"MovieDetailString_alertForRemovingFavoritesMessage" = "Movie has been removed from the favorites";
+"MovieDetailString_alertForServicesMessage" = "Character not found";
+"MovieDetailString_alertForDirectingHomepageMessage" = "Movie homepage was not found";
 "CastDetailString_castBirthdayLabel" = "Born:";
 "CastDetailString_castBirthplaceLabel" = "Birthplace:";
 "CastDetailString_castDeathdayLabel" = "Deathday:";

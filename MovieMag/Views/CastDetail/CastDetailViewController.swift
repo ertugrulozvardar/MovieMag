@@ -45,7 +45,7 @@ class CastDetailViewController: UIViewController {
             }
         } else {
             if let currentNavigationController = self.navigationController {
-                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
+                alertManager.createAlert(alertTitle: MovieDetailString.alertFailureTitle.localized, alertMessage: MovieDetailString.alertForServicesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
             }
         }
     }

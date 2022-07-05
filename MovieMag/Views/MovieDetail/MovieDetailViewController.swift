@@ -84,7 +84,7 @@ class MovieDetailViewController: UIViewController {
             }
         } else {
             if let currentNavigationController = self.navigationController {
-                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
+                alertManager.createAlert(alertTitle: MovieDetailString.alertFailureTitle.localized, alertMessage: MovieDetailString.alertForServicesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
             }
         }
     }
@@ -102,7 +102,7 @@ class MovieDetailViewController: UIViewController {
             }
         } else {
             if let currentNavigationController = self.navigationController {
-                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
+                alertManager.createAlert(alertTitle: MovieDetailString.alertFailureTitle.localized, alertMessage: MovieDetailString.alertForServicesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
             }
         }
     }
@@ -120,7 +120,7 @@ class MovieDetailViewController: UIViewController {
             }
         } else {
             if let currentNavigationController = self.navigationController {
-                alertManager.createAlertForServices(navigationController: currentNavigationController, viewController: self)
+                alertManager.createAlert(alertTitle: MovieDetailString.alertFailureTitle.localized, alertMessage: MovieDetailString.alertForServicesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
             }
         }
     }
@@ -140,15 +140,13 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
-        if let currentHomepage = movieDetail?.homepage {
+        if let currentHomepage = movieDetail?.homepage, !currentHomepage.isEmpty {
             directToURL(url: currentHomepage)
         } else {
             if let currentNavigationController = self.navigationController {
-                alertManager.createAlertForAddingFavorites(navigationController: currentNavigationController, viewController: self)
+                alertManager.createAlert(alertTitle: MovieDetailString.alertFailureTitle.localized, alertMessage: MovieDetailString.alertForDirectingHomepageMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
             }
-            
         }
-        
     }
     
     func directToURL(url: String) {
@@ -177,7 +175,7 @@ class MovieDetailViewController: UIViewController {
             if !dataManager.isInFavorites(movie: currentMovie) {
                 dataManager.saveToFavorites(movie: currentMovie)
                 if let currentNavigationController = self.navigationController {
-                    alertManager.createAlertForAddingFavorites(navigationController: currentNavigationController, viewController: self)
+                    alertManager.createAlert(alertTitle: MovieDetailString.alertSuccessTitle.localized, alertMessage: MovieDetailString.alertForAddingFavoritesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
                 }
                 addToFavoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
                 
@@ -185,7 +183,7 @@ class MovieDetailViewController: UIViewController {
                 if let currentMovie = movie {
                     dataManager.removeFromfavorites(movie: currentMovie)
                     if let currentNavigationController = self.navigationController {
-                        alertManager.createAlertForRemovingFavorites(navigationController: currentNavigationController, viewController: self)
+                        alertManager.createAlert(alertTitle: MovieDetailString.alertSuccessTitle.localized, alertMessage: MovieDetailString.alertForRemovingFavoritesMessage.localized, buttonTitle: MovieDetailString.alertOKTitle.localized, navigationController: currentNavigationController, viewController: self)
                     }
                     addToFavoritesButton.setImage(UIImage(systemName: "star"), for: .normal)
                 }

@@ -19,6 +19,13 @@ enum MovieDetailString: String {
     case movieRecommendationsLabel
     case movieCastLabel
     case homepageButton
+    case alertSuccessTitle
+    case alertFailureTitle
+    case alertOKTitle
+    case alertForAddingFavoritesMessage
+    case alertForRemovingFavoritesMessage
+    case alertForServicesMessage
+    case alertForDirectingHomepageMessage
     
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")
