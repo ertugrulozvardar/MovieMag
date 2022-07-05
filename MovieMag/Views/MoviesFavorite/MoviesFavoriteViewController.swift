@@ -46,7 +46,12 @@ class MoviesFavoriteViewController: UIViewController {
 extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return favoriteMovies.count
+        if favoriteMovies.count == 0 {
+            self.favoritesTableView.setEmptyMessage("No results found")
+        } else {
+            self.favoritesTableView.restore()
+        }
+        return favoriteMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +82,7 @@ extension MoviesFavoriteViewController: UITableViewDelegate, UITableViewDataSour
             self.navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
     }
-        
 }
+
 
 

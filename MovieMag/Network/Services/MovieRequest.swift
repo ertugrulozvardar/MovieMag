@@ -40,7 +40,7 @@ extension MovieRequest: Requestable {
                 URLQueryItem(name: "query", value: searchQuery)
             ]
             let url = urlComponents.string!
-            let percentedURL = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let percentedURL = url.replacingOccurrences(of: " ", with: "%20")
             return percentedURL
         }
     }

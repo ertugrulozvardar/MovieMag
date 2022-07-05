@@ -54,7 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="080-sE-WPo"/>
                     <connections>
-                        <outlet property="tableView" destination="ddH-fc-Pe7" id="46g-nm-cfi"/>
+                        <outlet property="moviesTableView" destination="ddH-fc-Pe7" id="46g-nm-cfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMT-82-8iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

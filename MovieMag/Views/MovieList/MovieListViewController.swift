@@ -15,7 +15,7 @@ class MovieListViewController: UIViewController {
         return imageView
     }()
     
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet weak var moviesTableView: UITableView! {
         didSet {
             configureTableView()
         }
@@ -72,10 +72,10 @@ class MovieListViewController: UIViewController {
     }
     
     func configureTableView() {
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.prefetchDataSource = self
-        self.tableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
+        self.moviesTableView.dataSource = self
+        self.moviesTableView.delegate = self
+        self.moviesTableView.prefetchDataSource = self
+        self.moviesTableView.register(UINib(nibName: String(describing: MovieTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MovieTableViewCell.self))
     }
     
     func initSearchBar() {
@@ -91,7 +91,7 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies.append(contentsOf: response.results ?? [])
-                    self?.tableView.reloadData()
+                    self?.moviesTableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
             case .failure(let error):
@@ -106,7 +106,7 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.movies = response.results ?? []
-                    self?.tableView.reloadData()
+                    self?.moviesTableView.reloadData()
                     self?.currentPage += 1
                     self?.isFetchingMovies = false
             case .failure(let error):
@@ -119,6 +119,11 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if movies.count == 0 {
+            self.moviesTableView.setEmptyMessage("No results found")
+        } else {
+            self.moviesTableView.restore()
+        }
         return movies.count
     }
     
@@ -175,6 +180,28 @@ extension MovieListViewController: UISearchBarDelegate {
         if let searchText = timer.userInfo as? String {
             searchMovies(searchQuery: searchText)
         }
+    }
+}
+
+//MARK: -TableView Methods
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }
 
