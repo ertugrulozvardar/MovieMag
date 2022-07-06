@@ -28,6 +28,7 @@ extension CastRequest: Requestable {
             urlComponents.path = "/\(baseNumberParameter)/movie/\(id)/credits"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "language", value: languageCode)
             ]
             return urlComponents.string!
         }

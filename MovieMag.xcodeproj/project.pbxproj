@@ -134,8 +134,9 @@
 		4F490FC0285C6B7C003C3334 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4F81CAA828746A52005EEEDE /* Extensions */,
 				4F490FC1285C6B89003C3334 /* DataManager.swift */,
+				4F38E0CC287322E100B84ABD /* AlertManager.swift */,
+				4F81CAA828746A52005EEEDE /* Extensions */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -186,7 +187,6 @@
 				6F265CCD2846B4C90032026D /* MoviesFavorite */,
 				6F265CCA2846B4750032026D /* MovieDetail */,
 				6F265CC22846B4150032026D /* MovieList */,
-				4F38E0CC287322E100B84ABD /* AlertManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

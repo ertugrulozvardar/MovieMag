@@ -13,7 +13,6 @@ struct AlertManager {
     func createAlert(alertTitle: String, alertMessage: String, buttonTitle: String, navigationController: UINavigationController, viewController: UIViewController) {
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let okButton = UIAlertAction(title: buttonTitle, style: .default) { action in
-            //navigationController.popViewController(animated: true)
         }
         alertController.addAction(okButton)
         viewController.present(alertController, animated: true)

@@ -30,14 +30,16 @@ extension MovieRequest: Requestable {
             urlComponents.path = "/\(baseNumberParameter)/movie/popular"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
-                URLQueryItem(name: "page", value: String(page))
+                URLQueryItem(name: "page", value: String(page)),
+                URLQueryItem(name: "language", value: languageCode)
             ]
             return urlComponents.string!
         case .searchAllMovies(let searchQuery):
             urlComponents.path = "/\(baseNumberParameter)/search/movie"
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
-                URLQueryItem(name: "query", value: searchQuery)
+                URLQueryItem(name: "query", value: searchQuery),
+                URLQueryItem(name: "language", value: languageCode)
             ]
             let url = urlComponents.string!
             let percentedURL = url.replacingOccurrences(of: " ", with: "%20")
