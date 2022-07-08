@@ -42,7 +42,7 @@ class MovieListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = "Movies"
-        tapToScrollToTheTop(font: UIFont.systemFont(ofSize: 24, weight: .semibold), textColor: UIColor.black, backgroundColor: UIColor.clear)
+        tapToScrollToTheTop(font: UIFont.systemFont(ofSize: 24, weight: .semibold), textColor: UIColor.systemGray, backgroundColor: UIColor.clear)
     }
     
     override func viewDidLayoutSubviews() {
