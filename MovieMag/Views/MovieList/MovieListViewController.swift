@@ -40,6 +40,11 @@ class MovieListViewController: UIViewController {
         fetchMovies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Movies"
+        tapToScrollToTheTop(font: UIFont.systemFont(ofSize: 24, weight: .semibold), textColor: UIColor.black, backgroundColor: UIColor.clear)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageView.center = view.center
@@ -74,7 +79,7 @@ class MovieListViewController: UIViewController {
     }
     
     private func createLoadingSpinner() -> UIView {
-        let loadingFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let loadingFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300))
         let loadingSpinner = UIActivityIndicatorView()
         loadingSpinner.center = loadingFooterView.center
         loadingFooterView.addSubview(loadingSpinner)
@@ -134,6 +139,25 @@ class MovieListViewController: UIViewController {
     
     @objc func movieChanged() {
         self.moviesTableView.reloadData()
+    }
+    
+    func tapToScrollToTheTop(font: UIFont, textColor: UIColor, backgroundColor: UIColor) {
+        let titleLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        titleLabel.text = self.navigationItem.title
+        titleLabel.textColor = textColor
+        titleLabel.font = font
+        titleLabel.backgroundColor = backgroundColor
+        titleLabel.textAlignment = .center
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.labelPressed))
+            tapGestureRecognizer.numberOfTapsRequired = 1
+        titleLabel.addGestureRecognizer(tapGestureRecognizer)
+        titleLabel.isUserInteractionEnabled = true
+        self.navigationItem.titleView = titleLabel
+    }
+        
+    @objc func labelPressed(_ sender: UITapGestureRecognizer) { //Press the navigation label to go at the top
+            let topBoundary = CGPoint(x: 0, y: -(self.moviesTableView?.contentInset.top ?? 0))
+            self.moviesTableView?.setContentOffset(topBoundary, animated: true)
     }
 }
 //MARK: -TableView Delegate & DataSource Methods
