@@ -3,4 +3,4 @@
 - Search the whatever movie you want
 - Add your favorite movies into your favorites list
 
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/MovieMag1.png?raw=true)
+![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag1.png?raw=true)
