@@ -5,8 +5,7 @@
 
 You can see the screenshots of the application below
 
-<img src=“Images/MovieMag1.png“ width=“100“ height=“100“ >
-
+<img src=“https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag1.png“ width=“100“ height=“100“ >
 
 
 
