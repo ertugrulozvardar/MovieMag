@@ -3,6 +3,8 @@
 - Search the whatever movie you want
 - Add your favorite movies into your favorites list
 
+Demo of the application: https://drive.google.com/drive/folders/1bi7RPS38ZFkeeeP1-ish-8I47qNBVAWH?usp=sharing
+
 You can see the screenshots of the application below
 
 ![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag1.png?raw=true)
