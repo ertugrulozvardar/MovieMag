@@ -28,7 +28,7 @@ extension Requestable {
     }
     
     var apiKey: String {
-        return "2a688e11aac3f4d3278cc7ed05a281ec"
+        return "YOUR_API_KEY_HERE"
     }
     
     var languageCode: String {
