@@ -26,6 +26,6 @@ MovieMag is an iOS application where you can reach out all movies as well as the
 - [x] Web Services
 - [x] [Kingfisher](https://github.com/onevcat/Kingfisher)
 
-## Demo of the application:
+## Demo of the application:
 
 https://user-images.githubusercontent.com/44060683/190386591-d54e5ed3-c8fd-4681-b64a-b2ed367f875f.mp4
