@@ -1,22 +1,29 @@
 # MovieMag
-## A mobile app where you can reach out all movies and its details 
-- Search the whatever movie you want
-- Add your favorite movies into your favorites list
 
-Demo of the application: https://drive.google.com/drive/folders/1bi7RPS38ZFkeeeP1-ish-8I47qNBVAWH?usp=sharing
+MovieMag is an iOS application where you can reach out all movies as well as their details from different genres and categories.
 
-You can see the screenshots of the application below
+Functionalities:
+  - You can retrieve movies by performing a search with the query you want
+  - You can also navigate between different movies from the recommended movies section
+  - You will be able to see the entire cast of the movie
+  - Moreover, you also have the opportunity to access the personal details of each actor
+  - You can create your own favorite movies list by adding or deleting movies
 
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag1.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag2.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag3.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag4.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag5.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag6.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag7.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag8.png?raw=true)
-![MovieScreenshot1](https://github.com/ertugrulozvardar/MovieMag/blob/main/Images/MovieMag9.png?raw=true)
+Usage:
+  - Authentication
+* You need to enter your own API-Key to access the movies from external API. 
+* The file path where you will enter your API key is: -> "Network/Core/Requestable.swift"
+* In order to get your own API-Key, you first need to create a free subscription to the TMBD API. -> [https://www.themoviedb.org/signup]
 
+## Technology and Structures
+- [x] MVC Design Pattern
+- [x] Auto layout
+- [x] Localization
+- [X] RESTful API
+- [x] URLSession
+- [x] CollectionView 
+- [x] TableView 
+- [x] Web Services
+- [x] [Kingfisher](https://github.com/onevcat/Kingfisher)
 
-
-
+Demo of the application:
